@@ -1,0 +1,61 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Calculator } from "lucide-react";
+import Index from "./pages/Index";
+import ROICalculator from "./pages/ROICalculator";
+import PricingCalculator from "./pages/PricingCalculator";
+import ChurnCalculator from "./pages/ChurnCalculator";
+import MRRSimulator from "./pages/MRRSimulator";
+import RetentionCalculator from "./pages/RetentionCalculator";
+import NotFound from "./pages/NotFound";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col">
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/roi-calculator" element={<ROICalculator />} />
+            <Route path="/pricing-calculator" element={<PricingCalculator />} />
+            <Route path="/churn-calculator" element={<ChurnCalculator />} />
+            <Route path="/mrr-simulator" element={<MRRSimulator />} />
+            <Route
+              path="/retention-calculator"
+              element={<RetentionCalculator />}
+            />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+          
+          {/* Footer */}
+          <footer className="border-t bg-card/50 mt-auto">
+            <div className="container mx-auto px-4 py-8">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                    <Calculator className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                  <span className="font-semibold">BreakEven</span>
+                </div>
+
+                <p className="text-sm text-muted-foreground">
+                  Made with 💚 for indie hackers and solopreneurs
+                </p>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;
