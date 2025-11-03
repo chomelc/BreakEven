@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Calculator } from "lucide-react";
+import { Calculator, Github } from "lucide-react";
 import Index from "./pages/Index";
 import ROICalculator from "./pages/ROICalculator";
 import PricingCalculator from "./pages/PricingCalculator";
@@ -34,7 +34,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-          
+
           {/* Footer */}
           <footer className="border-t bg-card/50 mt-auto">
             <div className="container mx-auto px-4 py-8">
@@ -50,17 +50,28 @@ const App = () => (
                   <p className="text-sm text-muted-foreground">
                     Made with 💚 for indie hackers and solopreneurs
                   </p>
-                  <a
-                    href="https://www.buymeacoffee.com/breakeven"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="h-10"
-                      alt="Support BreakEven on Buy Me a Coffee"
-                      src="https://img.buymeacoffee.com/button-api/?text=Support%20BreakEven&emoji=%F0%9F%9A%80&slug=breakeven&button_colour=10b77f&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=FFDD00"
-                    />
-                  </a>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://www.buymeacoffee.com/breakeven"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        className="h-10"
+                        alt="Support BreakEven on Buy Me a Coffee"
+                        src="https://img.buymeacoffee.com/button-api/?text=Support%20BreakEven&emoji=%F0%9F%9A%80&slug=breakeven&button_colour=10b77f&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=FFDD00"
+                      />
+                    </a>
+                    <a
+                      href="https://github.com/chomelc/BreakEven"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View BreakEven on GitHub"
+                      className="inline-flex items-center justify-center rounded-md border bg-background hover:bg-accent text-foreground h-10 w-10 transition-colors"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
