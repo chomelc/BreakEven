@@ -10,11 +10,11 @@ BreakEven is a collection of five powerful calculators designed specifically for
 
 ## Features
 
-- **ROI Calculator** - Estimate when your side project breaks even based on costs, pricing, and growth projections
-- **Pricing Calculator** - Experiment with different price points and conversion rates to optimize revenue
-- **Churn Calculator** - Understand the impact of customer churn on your recurring revenue over time
-- **MRR Growth Simulator** - Visualize monthly recurring revenue growth with adjustable inputs and projections
-- **Retention Impact** - See how retention improvements affect customer lifetime value and overall profitability
+- **ROI Calculator** (Core) - Estimate when your side project breaks even based on costs, pricing, and growth projections
+- **Pricing Calculator** (Core) - Experiment with different price points and conversion rates to optimize revenue
+- **Churn Calculator** (Pro) - Understand the impact of customer churn on your recurring revenue over time
+- **MRR Growth Simulator** (Pro) - Visualize monthly recurring revenue growth with adjustable inputs and projections
+- **Retention Impact** (Pro) - See how retention improvements affect customer lifetime value and overall profitability
 
 Each calculator includes:
 - Interactive charts and visualizations
@@ -83,7 +83,21 @@ npm run preview
 
 ## Licensing
 
-Licensed under Apache-2.0. See `LICENSE`.
+- Core: Licensed under Apache-2.0. See `LICENSE`.
+- Pro: Commercial license. See `EULA.md`.
+
+### Enabling Pro locally
+
+Set an environment flag to unlock Pro screens during local development:
+
+```bash
+echo "VITE_PRO_ENABLED=true" > .env.local
+npm run dev
+```
+
+When `VITE_PRO_ENABLED` is not set to `true`, navigating to Pro routes (`churn-calculator`, `mrr-simulator`, `retention-calculator`) shows an upsell page.
+
+Note: Real license enforcement must happen server-side (e.g., account checks, license keys, feature flags). The client flag is only a UX gate for demos/local dev.
 
 ---
 

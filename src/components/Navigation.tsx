@@ -6,9 +6,13 @@ import {
   DollarSign,
   Target,
   Home,
+  Menu,
+  KeyRound,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { isPro } from "@/lib/license";
 
 const Navigation = () => {
   const location = useLocation();
@@ -20,6 +24,7 @@ const Navigation = () => {
     { path: "/churn-calculator", label: "Churn", icon: Users },
     { path: "/mrr-simulator", label: "MRR", icon: TrendingUp },
     { path: "/retention-calculator", label: "Retention", icon: Target },
+    { path: "/pro", label: "BreakEven Pro", icon: KeyRound },
   ];
 
   return (
@@ -30,31 +35,40 @@ const Navigation = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <Calculator className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-semibold text-lg hidden sm:inline">
+            <span className="font-semibold text-lg hidden sm:inline flex items-center gap-2">
               BreakEven
+            </span>
+            <span>
+              {isPro() && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded border bg-primary/10 text-primary border-primary/20">
+                  Pro
+                </span>
+              )}
             </span>
           </Link>
 
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
+            {/* Desktop navigation */}
+            <div className="hidden sm:flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 const Icon = item.icon;
                 const isHome = item.path === "/";
+                const isProLink = item.path === "/pro";
 
                 return (
                   <Button
                     key={item.path}
                     asChild
-                    variant={isActive ? "secondary" : "ghost"}
+                    variant={
+                      isProLink ? "default" : isActive ? "secondary" : "ghost"
+                    }
                     size="sm"
-                    className="gap-2"
+                    className={"gap-2"}
                   >
                     <Link to={item.path}>
                       {Icon && (
-                        <Icon
-                          className={isHome ? "w-4 h-4 sm:hidden" : "w-4 h-4"}
-                        />
+                        <Icon className={isHome ? "w-4 h-4" : "w-4 h-4"} />
                       )}
                       <span className="hidden sm:inline">{item.label}</span>
                     </Link>
@@ -62,7 +76,67 @@ const Navigation = () => {
                 );
               })}
             </div>
-            <ThemeToggle />
+
+            {/* Mobile menu trigger */}
+            <div className="sm:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" aria-label="Open menu">
+                    <Menu className="w-5 h-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-72">
+                  <div className="flex items-center gap-2 mb-6">
+                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                      <Calculator className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <span className="font-semibold text-lg flex items-center gap-2">
+                      BreakEven
+                      {isPro() && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded border bg-primary/10 text-primary border-primary/20">
+                          Pro
+                        </span>
+                      )}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    {navItems.map((item) => {
+                      const isActive = location.pathname === item.path;
+                      const Icon = item.icon;
+                      const isProLink = item.path === "/pro";
+                      return (
+                        <Button
+                          key={item.path}
+                          asChild
+                          variant={
+                            isProLink
+                              ? "default"
+                              : isActive
+                              ? "secondary"
+                              : "ghost"
+                          }
+                          className={"justify-start gap-3"}
+                        >
+                          <Link to={item.path}>
+                            {Icon && <Icon className="w-4 h-4" />}
+                            {item.label}
+                          </Link>
+                        </Button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="mt-6">
+                    <ThemeToggle />
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+
+            <div className="hidden sm:block">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>

@@ -9,12 +9,14 @@ import {
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
-interface CalculatorCardProps {
+export interface CalculatorCardProps {
   title: string;
   description: string;
   icon: LucideIcon;
   to: string;
+  tier?: "Core" | "Pro";
 }
 
 const CalculatorCard = ({
@@ -22,6 +24,7 @@ const CalculatorCard = ({
   description,
   icon: Icon,
   to,
+  tier,
 }: CalculatorCardProps) => {
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/20">
@@ -29,7 +32,17 @@ const CalculatorCard = ({
         <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
           <Icon className="w-6 h-6 text-accent-foreground" />
         </div>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <div className="flex items-center gap-2">
+          <CardTitle className="text-xl">{title}</CardTitle>
+          {tier && (
+            <Badge
+              className={tier === "Pro" ? "" : "border-foreground/20"}
+              variant={tier === "Pro" ? "default" : "outline"}
+            >
+              {tier}
+            </Badge>
+          )}
+        </div>
         <CardDescription className="text-base">{description}</CardDescription>
       </CardHeader>
       <CardContent>

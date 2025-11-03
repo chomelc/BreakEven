@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { Helmet } from "react-helmet-async";
-import CalculatorCard from "@/components/CalculatorCard";
+import CalculatorCard, { CalculatorCardProps } from "@/components/CalculatorCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,13 +16,14 @@ import {
 } from "lucide-react";
 
 const Index = () => {
-  const calculators = [
+  const calculators: CalculatorCardProps[] = [
     {
       title: "ROI Calculator",
       description:
         "Estimate when your side project breaks even based on costs, pricing, and growth.",
       icon: Calculator,
       to: "/roi-calculator",
+      tier: "Core",
     },
     {
       title: "Pricing Calculator",
@@ -30,6 +31,7 @@ const Index = () => {
         "Experiment with price points and conversion rates to optimize revenue.",
       icon: DollarSign,
       to: "/pricing-calculator",
+      tier: "Core",
     },
     {
       title: "Churn Calculator",
@@ -37,6 +39,7 @@ const Index = () => {
         "Compute the impact of churn rate on recurring revenue over time.",
       icon: Users,
       to: "/churn-calculator",
+      tier: "Pro",
     },
     {
       title: "MRR Growth Simulator",
@@ -44,6 +47,7 @@ const Index = () => {
         "Visualize monthly recurring revenue growth with adjustable inputs.",
       icon: TrendingUp,
       to: "/mrr-simulator",
+      tier: "Pro",
     },
     {
       title: "Retention Impact",
@@ -51,6 +55,7 @@ const Index = () => {
         "See how retention improvements affect lifetime value and profit.",
       icon: Target,
       to: "/retention-calculator",
+      tier: "Pro",
     },
   ];
 

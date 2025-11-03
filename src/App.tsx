@@ -11,6 +11,9 @@ import PricingCalculator from "./pages/PricingCalculator";
 import ChurnCalculator from "./pages/ChurnCalculator";
 import MRRSimulator from "./pages/MRRSimulator";
 import RetentionCalculator from "./pages/RetentionCalculator";
+import Pro from "./pages/Pro";
+import ProInfo from "./pages/ProInfo";
+import { isProEnabled } from "./lib/license";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,13 +28,38 @@ const App = () => (
           <div className="min-h-screen flex flex-col">
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/pro" element={<ProInfo />} />
             <Route path="/roi-calculator" element={<ROICalculator />} />
             <Route path="/pricing-calculator" element={<PricingCalculator />} />
-            <Route path="/churn-calculator" element={<ChurnCalculator />} />
-            <Route path="/mrr-simulator" element={<MRRSimulator />} />
+            <Route
+              path="/churn-calculator"
+              element={
+                isProEnabled() ? (
+                  <ChurnCalculator />
+                ) : (
+                  <Pro title="Churn Calculator" subtitle="Understand your churn impact 📊" />
+                )
+              }
+            />
+            <Route
+              path="/mrr-simulator"
+              element={
+                isProEnabled() ? (
+                  <MRRSimulator />
+                ) : (
+                  <Pro title="MRR Growth Simulator" subtitle="Visualize your MRR growth 📈" />
+                )
+              }
+            />
             <Route
               path="/retention-calculator"
-              element={<RetentionCalculator />}
+              element={
+                isProEnabled() ? (
+                  <RetentionCalculator />
+                ) : (
+                  <Pro title="Retention Impact Calculator" subtitle="See how retention affects LTV 🎯" />
+                )
+              }
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
