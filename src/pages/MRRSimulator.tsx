@@ -81,7 +81,7 @@ Churn rate: ${churnRate}%
 Expansion rate: ${expansionRate}%
 MRR after 12 months: $${finalData.totalMRR.toLocaleString()}
 Total growth: ${growth}%
-Try it yourself at breakeven.app`;
+Try it yourself at breakeven.dev`;
 
     const success = await copyToClipboard(summary);
     if (success) {

@@ -73,7 +73,7 @@ Target price: $${pricePoint}
 Paying customers: ${selectedData?.users.toLocaleString() || 0}
 Monthly revenue: $${selectedData?.mrr.toLocaleString() || 0}
 Annual revenue: $${((selectedData?.mrr || 0) * 12).toLocaleString()}
-Try it yourself at breakeven.app`;
+Try it yourself at breakeven.dev`;
 
     const success = await copyToClipboard(summary);
     if (success) {

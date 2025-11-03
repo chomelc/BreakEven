@@ -81,7 +81,7 @@ New customers/month: ${newCustomers}
 Customers after 12 months: ${Math.round(finalData.customers).toLocaleString()}
 Monthly revenue loss: $${Math.round(monthlyLoss).toLocaleString()}
 Annual revenue lost to churn: $${Math.round(monthlyLoss * 12).toLocaleString()}
-Try it yourself at breakeven.app`;
+Try it yourself at breakeven.dev`;
 
     const success = await copyToClipboard(summary);
     if (success) {
