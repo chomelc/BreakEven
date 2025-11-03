@@ -29,6 +29,7 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 
 const ROICalculator = () => {
   const { toast } = useToast();
@@ -144,6 +145,14 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>ROI Calculator - BreakEven</title>
+        <meta name="description" content="Estimate when your side project breaks even based on costs, pricing, and growth projections." />
+        <link rel="canonical" href="https://breakeven.dev/roi-calculator" />
+        <meta property="og:title" content="ROI Calculator - BreakEven" />
+        <meta property="og:description" content="Estimate when your side project breaks even based on costs, pricing, and growth projections." />
+        <meta property="og:url" content="https://breakeven.dev/roi-calculator" />
+      </Helmet>
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">

@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { Calculator, Github } from "lucide-react";
 import Index from "./pages/Index";
 import ROICalculator from "./pages/ROICalculator";
@@ -19,8 +20,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <div className="min-h-screen flex flex-col">
+      <HelmetProvider>
+        <BrowserRouter>
+          <div className="min-h-screen flex flex-col">
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/roi-calculator" element={<ROICalculator />} />
@@ -35,8 +37,8 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
 
-          {/* Footer */}
-          <footer className="border-t bg-card/50 mt-auto">
+            {/* Footer */}
+            <footer className="border-t bg-card/50 mt-auto">
             <div className="container mx-auto px-4 py-8">
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div className="flex items-center gap-2">
@@ -75,9 +77,10 @@ const App = () => (
                 </div>
               </div>
             </div>
-          </footer>
-        </div>
-      </BrowserRouter>
+            </footer>
+          </div>
+        </BrowserRouter>
+      </HelmetProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

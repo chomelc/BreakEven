@@ -28,6 +28,7 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 
 const ChurnCalculator = () => {
   const { toast } = useToast();
@@ -143,6 +144,14 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Churn Calculator - BreakEven</title>
+        <meta name="description" content="Understand the impact of customer churn on your recurring revenue over time." />
+        <link rel="canonical" href="https://breakeven.dev/churn-calculator" />
+        <meta property="og:title" content="Churn Calculator - BreakEven" />
+        <meta property="og:description" content="Understand the impact of customer churn on your recurring revenue over time." />
+        <meta property="og:url" content="https://breakeven.dev/churn-calculator" />
+      </Helmet>
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">

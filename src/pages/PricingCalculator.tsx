@@ -27,6 +27,7 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 
 const PricingCalculator = () => {
   const { toast } = useToast();
@@ -124,6 +125,14 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Pricing Calculator - BreakEven</title>
+        <meta name="description" content="Experiment with different price points and conversion rates to optimize revenue." />
+        <link rel="canonical" href="https://breakeven.dev/pricing-calculator" />
+        <meta property="og:title" content="Pricing Calculator - BreakEven" />
+        <meta property="og:description" content="Experiment with different price points and conversion rates to optimize revenue." />
+        <meta property="og:url" content="https://breakeven.dev/pricing-calculator" />
+      </Helmet>
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">

@@ -2,7 +2,7 @@
 
 Free financial calculators to help indie hackers and solopreneurs make smarter decisions about pricing, growth, and profitability.
 
-[![BreakEven Hero](assets/hero.png)](https://breakeven.dev)
+[![BreakEven Hero](public/og-image.png)](https://breakeven.dev)
 
 ## What is BreakEven?
 

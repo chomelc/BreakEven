@@ -28,6 +28,7 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 
 const MRRSimulator = () => {
   const { toast } = useToast();
@@ -145,6 +146,14 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>MRR Growth Simulator - BreakEven</title>
+        <meta name="description" content="Visualize monthly recurring revenue growth with adjustable inputs and projections." />
+        <link rel="canonical" href="https://breakeven.dev/mrr-simulator" />
+        <meta property="og:title" content="MRR Growth Simulator - BreakEven" />
+        <meta property="og:description" content="Visualize monthly recurring revenue growth with adjustable inputs and projections." />
+        <meta property="og:url" content="https://breakeven.dev/mrr-simulator" />
+      </Helmet>
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">

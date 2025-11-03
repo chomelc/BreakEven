@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import { Helmet } from "react-helmet-async";
 import CalculatorCard from "@/components/CalculatorCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -73,6 +74,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>BreakEven - Financial Calculators for Side Projects</title>
+        <meta
+          name="description"
+          content="Free financial calculators to help you make smarter decisions about pricing, growth, and profitability."
+        />
+        <link rel="canonical" href="https://breakeven.dev/" />
+        <meta property="og:title" content="BreakEven - Financial Calculators for Side Projects" />
+        <meta property="og:description" content="Free financial calculators to help you make smarter decisions about pricing, growth, and profitability." />
+        <meta property="og:url" content="https://breakeven.dev/" />
+      </Helmet>
       <Navigation />
 
       <main>

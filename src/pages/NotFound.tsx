@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
@@ -18,6 +19,10 @@ const NotFound = () => {
 
   return (
     <div className="bg-background flex flex-col flex-1">
+      <Helmet>
+        <title>Page Not Found - BreakEven</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <Navigation />
       <main className="flex-1 flex items-center justify-center">
         <section className="container mx-auto px-4 py-20 w-full">

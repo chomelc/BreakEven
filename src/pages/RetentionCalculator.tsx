@@ -28,6 +28,7 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
+import { Helmet } from "react-helmet-async";
 
 const RetentionCalculator = () => {
   const { toast } = useToast();
@@ -137,6 +138,14 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Retention Impact Calculator - BreakEven</title>
+        <meta name="description" content="See how retention improvements affect customer lifetime value and overall profitability." />
+        <link rel="canonical" href="https://breakeven.dev/retention-calculator" />
+        <meta property="og:title" content="Retention Impact Calculator - BreakEven" />
+        <meta property="og:description" content="See how retention improvements affect customer lifetime value and overall profitability." />
+        <meta property="og:url" content="https://breakeven.dev/retention-calculator" />
+      </Helmet>
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
