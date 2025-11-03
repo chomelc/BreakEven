@@ -51,7 +51,10 @@ const CalculatorCard = ({
           variant="ghost"
           className="group/btn p-0 h-auto font-medium text-primary hover:text-primary"
         >
-          <Link to={to} className="flex items-center gap-2">
+          <Link
+            to={to}
+            className="flex items-center gap-2 -mx-1.5 -my-0.5 px-1.5 py-0.5 rounded-md transition-colors hover:bg-primary/10"
+          >
             Try it now
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </Link>
