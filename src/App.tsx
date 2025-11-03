@@ -46,9 +46,22 @@ const App = () => (
                   <span className="font-semibold">BreakEven</span>
                 </div>
 
-                <p className="text-sm text-muted-foreground">
-                  Made with 💚 for indie hackers and solopreneurs
-                </p>
+                <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+                  <p className="text-sm text-muted-foreground">
+                    Made with 💚 for indie hackers and solopreneurs
+                  </p>
+                  <a
+                    href="https://www.buymeacoffee.com/breakeven"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      className="h-10"
+                      alt="Support BreakEven on Buy Me a Coffee"
+                      src="https://img.buymeacoffee.com/button-api/?text=Support%20BreakEven&emoji=%F0%9F%9A%80&slug=breakeven&button_colour=10b77f&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=FFDD00"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </footer>
