@@ -10,6 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { toast } from "@/components/ui/use-toast";
 import { hasValidLicenseKey, isPro, saveLicenseKey } from "@/lib/license";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const ProInfo = () => {
   const [open, setOpen] = useState(false);
@@ -178,10 +179,10 @@ const ProInfo = () => {
                       variant="outline"
                       className="gap-2 text-base"
                     >
-                      <a href="/">
+                      <Link to="/">
                         <Calculator className="w-5 h-5" />
                         Go to calculators
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 )}
