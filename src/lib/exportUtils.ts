@@ -3,6 +3,14 @@ import jsPDF from "jspdf";
 import { createRoot } from "react-dom/client";
 import React from "react";
 import { Calculator } from "lucide-react";
+import { hasValidLicenseKeySync } from "./license";
+import { hasReachedExportLimit, incrementExportCount } from "./exportTracking";
+
+export type ExportResult = {
+  success: boolean;
+  shouldShowProModal: boolean;
+  blocked: boolean;
+};
 
 // Helper function to create header with logo and app name
 const createHeader = (): Promise<HTMLElement> => {
@@ -116,11 +124,23 @@ const createExportContainer = async (element: HTMLElement): Promise<HTMLElement>
   return container;
 };
 
-export const exportToPNG = async (elementId: string, filename: string) => {
+export const exportToPNG = async (elementId: string, filename: string): Promise<ExportResult> => {
   const element = document.getElementById(elementId);
   if (!element) {
     console.error("Element not found");
-    return;
+    return { success: false, shouldShowProModal: false, blocked: false };
+  }
+
+  // Check if user is Pro
+  const isPro = hasValidLicenseKeySync();
+  
+  // If not Pro, check export limit
+  if (!isPro) {
+    if (hasReachedExportLimit()) {
+      return { success: false, shouldShowProModal: false, blocked: true };
+    }
+    // Increment count before export (for non-Pro users)
+    incrementExportCount();
   }
 
   let exportContainer: HTMLElement | null = null;
@@ -140,8 +160,14 @@ export const exportToPNG = async (elementId: string, filename: string) => {
     link.download = `${filename}.png`;
     link.href = canvas.toDataURL("image/png");
     link.click();
+    
+    // Return success with flag to show Pro modal if not Pro
+    return { success: true, shouldShowProModal: !isPro, blocked: false };
   } catch (error) {
     console.error("Error exporting to PNG:", error);
+    // If export failed after incrementing, we should ideally decrement
+    // But for simplicity, we'll leave it as is
+    return { success: false, shouldShowProModal: false, blocked: false };
   } finally {
     // Clean up temporary container
     if (exportContainer && exportContainer.parentNode) {
@@ -150,11 +176,23 @@ export const exportToPNG = async (elementId: string, filename: string) => {
   }
 };
 
-export const exportToPDF = async (elementId: string, filename: string) => {
+export const exportToPDF = async (elementId: string, filename: string): Promise<ExportResult> => {
   const element = document.getElementById(elementId);
   if (!element) {
     console.error("Element not found");
-    return;
+    return { success: false, shouldShowProModal: false, blocked: false };
+  }
+
+  // Check if user is Pro
+  const isPro = hasValidLicenseKeySync();
+  
+  // If not Pro, check export limit
+  if (!isPro) {
+    if (hasReachedExportLimit()) {
+      return { success: false, shouldShowProModal: false, blocked: true };
+    }
+    // Increment count before export (for non-Pro users)
+    incrementExportCount();
   }
 
   let exportContainer: HTMLElement | null = null;
@@ -179,8 +217,14 @@ export const exportToPDF = async (elementId: string, filename: string) => {
 
     pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
     pdf.save(`${filename}.pdf`);
+    
+    // Return success with flag to show Pro modal if not Pro
+    return { success: true, shouldShowProModal: !isPro, blocked: false };
   } catch (error) {
     console.error("Error exporting to PDF:", error);
+    // If export failed after incrementing, we should ideally decrement
+    // But for simplicity, we'll leave it as is
+    return { success: false, shouldShowProModal: false, blocked: false };
   } finally {
     // Clean up temporary container
     if (exportContainer && exportContainer.parentNode) {

@@ -30,6 +30,7 @@ import {
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
+import { ProInviteModal } from "@/components/ProInviteModal";
 
 const ROICalculator = () => {
   const { toast } = useToast();
@@ -38,6 +39,8 @@ const ROICalculator = () => {
   const [price, setPrice] = useState(29);
   const [initialUsers, setInitialUsers] = useState(10);
   const [growthRate, setGrowthRate] = useState(20);
+  const [showProModal, setShowProModal] = useState(false);
+  const [isLimitReached, setIsLimitReached] = useState(false);
 
   // Load URL params on mount
   useEffect(() => {
@@ -56,19 +59,41 @@ const ROICalculator = () => {
   }, []);
 
   const handleExportPNG = async () => {
-    await exportToPNG("roi-export-area", "roi-calculator-export");
-    toast({
-      title: "Exported to PNG",
-      description: "Your ROI calculation has been exported successfully.",
-    });
+    const result = await exportToPNG("roi-export-area", "roi-calculator-export");
+    if (result.blocked) {
+      setIsLimitReached(true);
+      setShowProModal(true);
+      return;
+    }
+    if (result.success) {
+      toast({
+        title: "Exported to PNG",
+        description: "Your ROI calculation has been exported successfully.",
+      });
+      if (result.shouldShowProModal) {
+        setIsLimitReached(false);
+        setShowProModal(true);
+      }
+    }
   };
 
   const handleExportPDF = async () => {
-    await exportToPDF("roi-export-area", "roi-calculator-export");
-    toast({
-      title: "Exported to PDF",
-      description: "Your ROI calculation has been exported successfully.",
-    });
+    const result = await exportToPDF("roi-export-area", "roi-calculator-export");
+    if (result.blocked) {
+      setIsLimitReached(true);
+      setShowProModal(true);
+      return;
+    }
+    if (result.success) {
+      toast({
+        title: "Exported to PDF",
+        description: "Your ROI calculation has been exported successfully.",
+      });
+      if (result.shouldShowProModal) {
+        setIsLimitReached(false);
+        setShowProModal(true);
+      }
+    }
   };
 
   const handleCopySummary = async () => {
@@ -145,6 +170,7 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
       <Helmet>
         <title>ROI Calculator - BreakEven</title>
         <meta name="description" content="Estimate when your side project breaks even based on costs, pricing, and growth projections." />

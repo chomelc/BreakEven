@@ -28,12 +28,15 @@ import {
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
+import { ProInviteModal } from "@/components/ProInviteModal";
 
 const PricingCalculator = () => {
   const { toast } = useToast();
   const [visitors, setVisitors] = useState(1000);
   const [conversionRate, setConversionRate] = useState(5);
   const [pricePoint, setPricePoint] = useState(29);
+  const [showProModal, setShowProModal] = useState(false);
+  const [isLimitReached, setIsLimitReached] = useState(false);
 
   // Load URL params on mount
   useEffect(() => {
@@ -48,19 +51,41 @@ const PricingCalculator = () => {
   }, []);
 
   const handleExportPNG = async () => {
-    await exportToPNG("pricing-export-area", "pricing-calculator-export");
-    toast({
-      title: "Exported to PNG",
-      description: "Your pricing analysis has been exported successfully.",
-    });
+    const result = await exportToPNG("pricing-export-area", "pricing-calculator-export");
+    if (result.blocked) {
+      setIsLimitReached(true);
+      setShowProModal(true);
+      return;
+    }
+    if (result.success) {
+      toast({
+        title: "Exported to PNG",
+        description: "Your pricing analysis has been exported successfully.",
+      });
+      if (result.shouldShowProModal) {
+        setIsLimitReached(false);
+        setShowProModal(true);
+      }
+    }
   };
 
   const handleExportPDF = async () => {
-    await exportToPDF("pricing-export-area", "pricing-calculator-export");
-    toast({
-      title: "Exported to PDF",
-      description: "Your pricing analysis has been exported successfully.",
-    });
+    const result = await exportToPDF("pricing-export-area", "pricing-calculator-export");
+    if (result.blocked) {
+      setIsLimitReached(true);
+      setShowProModal(true);
+      return;
+    }
+    if (result.success) {
+      toast({
+        title: "Exported to PDF",
+        description: "Your pricing analysis has been exported successfully.",
+      });
+      if (result.shouldShowProModal) {
+        setIsLimitReached(false);
+        setShowProModal(true);
+      }
+    }
   };
 
   const handleCopySummary = async () => {
@@ -125,6 +150,7 @@ Try it yourself at breakeven.dev`;
 
   return (
     <div className="min-h-screen bg-background">
+      <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
       <Helmet>
         <title>Pricing Calculator - BreakEven</title>
         <meta name="description" content="Experiment with different price points and conversion rates to optimize revenue." />

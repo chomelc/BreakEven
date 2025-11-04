@@ -24,7 +24,21 @@ const ProRoute = ({ children }: { children: React.ReactElement }) => {
   const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
 
   useEffect(() => {
+    // Validate on mount and update state
     isPro().then(setIsProUser);
+    
+    // Listen for Pro status changes
+    const handleProStatusChange = () => {
+      setIsProUser(hasValidLicenseKeySync());
+      // Also do async validation to be sure
+      isPro().then(setIsProUser);
+    };
+    
+    window.addEventListener('proStatusChanged', handleProStatusChange);
+    
+    return () => {
+      window.removeEventListener('proStatusChanged', handleProStatusChange);
+    };
   }, []);
 
   if (isProUser) {
