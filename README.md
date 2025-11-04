@@ -32,6 +32,10 @@ Built with modern web technologies:
 - 🎨 **shadcn/ui** - Beautiful component library
 - 🎭 **Tailwind CSS** - Utility-first styling
 - 📊 **Recharts** - Data visualization
+- 🛣️ **React Router** - Client-side routing
+- 🔄 **TanStack Query** - Data fetching and state management
+- 📄 **React Helmet Async** - SEO and meta tag management
+- 🔐 **License Key System** - Pro feature validation with SHA256 hashing
 
 ## Getting Started
 
@@ -43,7 +47,7 @@ Built with modern web technologies:
 
 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/chomelc/BreakEven.git
 cd BreakEven
 ```
 
@@ -86,18 +90,21 @@ npm run preview
 - Core: Licensed under Apache-2.0. See `LICENSE`.
 - Pro: Commercial license. See `EULA.md`.
 
-### Enabling Pro locally
+### Enabling Pro Features
 
-Set an environment flag to unlock Pro screens during local development:
+Pro features are protected by a license key system. To enable Pro features locally:
 
-```bash
-echo "VITE_PRO_ENABLED=true" > .env.local
-npm run dev
-```
+1. **Using License Keys**: The application validates license keys by comparing SHA256 hashes against a list of valid keys stored in `/public/valid-keys.json`. Enter a valid license key in the Pro section to unlock Pro calculators.
 
-When `VITE_PRO_ENABLED` is not set to `true`, navigating to Pro routes (`churn-calculator`, `mrr-simulator`, `retention-calculator`) shows an upsell page.
+2. **Development Mode** (Optional): For local development, you can set an environment flag to bypass license checks:
+   ```bash
+   echo "VITE_PRO_ENABLED=true" > .env.local
+   npm run dev
+   ```
 
-Note: Real license enforcement must happen server-side (e.g., account checks, license keys, feature flags). The client flag is only a UX gate for demos/local dev.
+When Pro features are not enabled, navigating to Pro routes (`/churn-calculator`, `/mrr-simulator`, `/retention-calculator`) shows an upsell page.
+
+**Note**: In production, license validation should be enforced server-side. The client-side validation is for UX purposes and should be complemented with server-side checks.
 
 ---
 
