@@ -147,7 +147,7 @@ const ProInfo = () => {
                           <Label htmlFor="licenseKey">License key</Label>
                           <Input
                             id="licenseKey"
-                            placeholder="e.g. BE-XXXXXX..."
+                            placeholder="e.g. BE-XXXX-XXXX"
                             value={licenseKey}
                             onChange={(e) => setLicenseKey(e.target.value)}
                             autoFocus
