@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "roi": "ROI",
+    "pricing": "Preisgestaltung",
+    "churn": "Kündigung",
+    "mrr": "MRR",
+    "retention": "Bindung",
+    "pro": "BreakEven Pro"
+  },
+  "common": {
+    "theme": "Thema",
+    "language": "Sprache"
+  },
+  "home": {
+    "badge": "Für Indie-Hacker gemacht",
+    "title": "Verstehen Sie das",
+    "titleHighlight": "Potenzial",
+    "titleSuffix": "Ihres Nebenprojekts",
+    "subtitle": "Kostenlose Finanzrechner, die Ihnen helfen, intelligentere Entscheidungen über Preisgestaltung, Wachstum und Rentabilität zu treffen.",
+    "ctaCalculate": "Mein ROI berechnen",
+    "ctaBrowse": "Tools durchsuchen",
+    "calculatorsTitle": "Fünf Rechner, endlose Erkenntnisse",
+    "calculatorsSubtitle": "Jedes Tool ist darauf ausgelegt, Ihnen Klarheit über einen bestimmten Aspekt der Finanzen Ihres Projekts zu geben.",
+    "testimonialsTitle": "Vertraut von Indie-Machern",
+    "testimonialsSubtitle": "Schließen Sie sich Hunderten von Entwicklern an, die intelligentere Geschäftsentscheidungen treffen",
+    "ctaTitle": "Bereit zum Rechnen?",
+    "ctaSubtitle": "Beginnen Sie mit dem ROI-Rechner und sehen Sie, wann Ihr Projekt profitabel wird.",
+    "ctaButton": "Kostenlos loslegen",
+    "calculators": {
+      "roi": {
+        "title": "ROI-Rechner",
+        "description": "Schätzen Sie, wann Ihr Nebenprojekt die Gewinnschwelle erreicht, basierend auf Kosten, Preisgestaltung und Wachstum.",
+        "tier": "Core"
+      },
+      "pricing": {
+        "title": "Preisrechner",
+        "description": "Experimentieren Sie mit Preispunkten und Konversionsraten, um den Umsatz zu optimieren.",
+        "tier": "Core"
+      },
+      "churn": {
+        "title": "Kündigungsrechner",
+        "description": "Berechnen Sie die Auswirkungen der Kündigungsrate auf wiederkehrende Einnahmen im Laufe der Zeit.",
+        "tier": "Pro"
+      },
+      "mrr": {
+        "title": "MRR-Wachstumssimulator",
+        "description": "Visualisieren Sie das Wachstum der monatlichen wiederkehrenden Einnahmen mit anpassbaren Eingaben.",
+        "tier": "Pro"
+      },
+      "retention": {
+        "title": "Bindungsauswirkung",
+        "description": "Sehen Sie, wie Verbesserungen der Bindung den Lebenszeitwert und Gewinn beeinflussen.",
+        "tier": "Pro"
+      }
+    },
+    "testimonials": {
+      "testimonial1": "Endlich ein Toolkit, das meine Sprache spricht. Kein Blödsinn, nur Zahlen.",
+      "testimonial2": "Helf mir, meinen SaaS mit Vertrauen zu bepreisen. Jede Minute wert.",
+      "testimonial3": "Sauber, schnell und genau das, was ich brauchte, um meine Ideen zu validieren.",
+      "author1": "Alex Chen",
+      "author2": "Sarah Rodriguez",
+      "author3": "James Park",
+      "role1": "Indie-Macher",
+      "role2": "Solo-Gründer",
+      "role3": "Nebenprojekt-Enthusiast"
+    }
+  },
+  "footer": {
+    "tagline": "Mit 💚 für Indie-Hacker und Solopreneure gemacht"
+  },
+  "pro": {
+    "unlock": "🔒 BreakEven Pro freischalten",
+    "support": "Unterstützen",
+    "accessAllTools": "Zugriff auf alle Tools",
+    "supportDescription": "<strong>Unterstützen</strong> Sie die Entwicklung und <strong>erhalten Sie Zugriff auf alle Tools</strong>",
+    "description": "BreakEven Pro umfasst den Kündigungsrechner, MRR-Simulator und Bindungrechner sowie unbegrenzte Exporte.",
+    "learnMore": "Mehr erfahren",
+    "getPro": "BreakEven Pro erhalten (5$)",
+    "defaultTitle": "BreakEven Pro freischalten - BreakEven",
+    "defaultDescription": "Unterstützen Sie die Entwicklung und schalten Sie erweiterte Rechner und unbegrenzte Exporte mit BreakEven Pro frei.",
+    "titleDescription": "Holen Sie sich BreakEven Pro, um {{title}} und andere erweiterte Tools freizuschalten. {{subtitle}}",
+    "calculators": {
+      "churn": {
+        "title": "Kündigungsrechner",
+        "subtitle": "Verstehen Sie Ihre Kündigungsauswirkung 📊"
+      },
+      "mrr": {
+        "title": "MRR-Wachstumssimulator",
+        "subtitle": "Visualisieren Sie Ihr MRR-Wachstum 📈"
+      },
+      "retention": {
+        "title": "Bindungsauswirkungsrechner",
+        "subtitle": "Sehen Sie, wie Bindung die LTV beeinflusst 🎯"
+      }
+    }
+  },
+  "proInfo": {
+    "title": "BreakEven Pro",
+    "subtitle": "Schalten Sie alle Rechner, erweiterte Simulationen und unbegrenzte Exporte frei.",
+    "advancedTools": "Erweiterte Tools",
+    "advancedToolsDesc": "Kündigungsrechner, MRR-Simulator, Bindungrechner",
+    "unlimitedExports": "Unbegrenzte Exporte",
+    "unlimitedExportsDesc": "Exportieren Sie Ergebnisse und Szenarien ohne Limits",
+    "simpleLicense": "Einfache, einmalige Lizenz",
+    "simpleLicenseDesc": "Sofortige Freischaltung über Lizenzschlüssel",
+    "youArePro": "Sie sind Pro ✨",
+    "getProTitle": "BreakEven Pro erhalten - Lebenslanger Zugang",
+    "licenseActive": "Lizenz aktiv. Genießen Sie alle Funktionen.",
+    "description": "Keine wiederkehrenden Gebühren. Ihre Lizenz schaltet alle aktuellen Pro-Funktionen frei. Geben Sie Ihren Lizenzschlüssel ein, um zu aktivieren.",
+    "enterKey": "Lizenzschlüssel eingeben",
+    "activateTitle": "BreakEven Pro aktivieren",
+    "activateDesc": "Fügen Sie Ihren Lizenzschlüssel unten ein, um alle Funktionen freizuschalten.",
+    "licenseKey": "Lizenzschlüssel",
+    "licenseKeyPlaceholder": "z.B. BE-XXXX-XXXX",
+    "cancel": "Abbrechen",
+    "activate": "Aktivieren",
+    "goToCalculators": "Zu den Rechnern gehen",
+    "faqTitle": "FAQ",
+    "faq1Question": "Was ist BreakEven Pro?",
+    "faq1Answer": "BreakEven Pro schaltet erweiterte Rechner (Kündigung, MRR-Simulator, Bindung) und unbegrenzte Exporte frei.",
+    "faq2Question": "Wie aktiviere ich meine Lizenz?",
+    "faq2Answer": "Klicken Sie oben auf \"Lizenzschlüssel eingeben\", fügen Sie Ihren Schlüssel ein und wählen Sie Aktivieren. Ihr Browser speichert die Lizenz.",
+    "faq3Question": "Ist dies ein Abonnement?",
+    "faq3Answer": "Nein, es ist eine einmalige Lizenz für die derzeit verfügbaren Pro-Funktionen.",
+    "contactTitle": "Kontakt",
+    "contactText": "Haben Sie Probleme? Schreiben Sie uns an",
+    "activatedTitle": "BreakEven Pro aktiviert!",
+    "activatedDesc": "Vielen Dank für Ihre Unterstützung!<br />Genießen Sie alle Pro-Funktionen.",
+    "getStarted": "Loslegen"
+  },
+  "proModal": {
+    "unlockTitle": "BreakEven Pro freischalten",
+    "limitReachedTitle": "Export-Limit erreicht",
+    "limitReachedDesc": "Sie haben Ihr monatliches Export-Limit erreicht (5 Exporte). Holen Sie sich BreakEven Pro für unbegrenzte Exporte und Zugang zu allen erweiterten Rechnern!",
+    "unlockDesc": "Erhalten Sie unbegrenzte Exporte und Zugang zu allen erweiterten Rechnern!",
+    "unlimitedExports": "Unbegrenzte Exporte",
+    "unlimitedExportsDesc": "Exportieren Sie Ihre Ergebnisse ohne monatliche Limits",
+    "allAdvanced": "Alle erweiterten Rechner",
+    "allAdvancedDesc": "Kündigungsrechner, MRR-Simulator, Bindungrechner",
+    "lifetimeAccess": "Lebenslanger Zugang",
+    "lifetimeAccessDesc": "Einmalige Zahlung, keine wiederkehrenden Gebühren",
+    "maybeLater": "Vielleicht später",
+    "getPro": "BreakEven Pro erhalten (5$)"
+  }
+}

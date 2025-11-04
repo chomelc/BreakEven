@@ -14,45 +14,43 @@ import {
   Sparkles,
   BarChart3,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
+  
   const calculators: CalculatorCardProps[] = [
     {
-      title: "ROI Calculator",
-      description:
-        "Estimate when your side project breaks even based on costs, pricing, and growth.",
+      title: t("home.calculators.roi.title"),
+      description: t("home.calculators.roi.description"),
       icon: Calculator,
       to: "/roi-calculator",
       tier: "Core",
     },
     {
-      title: "Pricing Calculator",
-      description:
-        "Experiment with price points and conversion rates to optimize revenue.",
+      title: t("home.calculators.pricing.title"),
+      description: t("home.calculators.pricing.description"),
       icon: DollarSign,
       to: "/pricing-calculator",
       tier: "Core",
     },
     {
-      title: "Churn Calculator",
-      description:
-        "Compute the impact of churn rate on recurring revenue over time.",
+      title: t("home.calculators.churn.title"),
+      description: t("home.calculators.churn.description"),
       icon: Users,
       to: "/churn-calculator",
       tier: "Pro",
     },
     {
-      title: "MRR Growth Simulator",
-      description:
-        "Visualize monthly recurring revenue growth with adjustable inputs.",
+      title: t("home.calculators.mrr.title"),
+      description: t("home.calculators.mrr.description"),
       icon: TrendingUp,
       to: "/mrr-simulator",
       tier: "Pro",
     },
     {
-      title: "Retention Impact",
-      description:
-        "See how retention improvements affect lifetime value and profit.",
+      title: t("home.calculators.retention.title"),
+      description: t("home.calculators.retention.description"),
       icon: Target,
       to: "/retention-calculator",
       tier: "Pro",
@@ -61,19 +59,19 @@ const Index = () => {
 
   const testimonials = [
     {
-      quote: "Finally, a toolkit that speaks my language. No BS, just numbers.",
-      author: "Alex Chen",
-      role: "Indie Maker",
+      quote: t("home.testimonials.testimonial1"),
+      author: t("home.testimonials.author1"),
+      role: t("home.testimonials.role1"),
     },
     {
-      quote: "Helped me price my SaaS with confidence. Worth every minute.",
-      author: "Sarah Rodriguez",
-      role: "Solo Founder",
+      quote: t("home.testimonials.testimonial2"),
+      author: t("home.testimonials.author2"),
+      role: t("home.testimonials.role2"),
     },
     {
-      quote: "Clean, fast, and exactly what I needed to validate my ideas.",
-      author: "James Park",
-      role: "Side Project Enthusiast",
+      quote: t("home.testimonials.testimonial3"),
+      author: t("home.testimonials.author3"),
+      role: t("home.testimonials.role3"),
     },
   ];
 
@@ -99,24 +97,24 @@ const Index = () => {
             <div className="inline-flex items-center gap-2 bg-accent/50 px-4 py-2 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium">
-                Built for indie hackers
+                {t("home.badge")}
               </span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Understand your side project's{" "}
-              <span className="text-primary">potential</span>
+              {t("home.title")}{" "}
+              <span className="text-primary">{t("home.titleHighlight")}</span>
+              {t("home.titleSuffix") && ` ${t("home.titleSuffix")}`}
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Free financial calculators to help you make smarter decisions
-              about pricing, growth, and profitability.
+              {t("home.subtitle")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="gap-2 text-base">
                 <Link to="/roi-calculator">
-                  Calculate my ROI
+                  {t("home.ctaCalculate")}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
@@ -133,7 +131,7 @@ const Index = () => {
                 }}
               >
                 <BarChart3 className="w-5 h-5" />
-                Browse tools
+                {t("home.ctaBrowse")}
               </Button>
             </div>
           </div>
@@ -143,11 +141,10 @@ const Index = () => {
         <section id="calculators" className="container mx-auto px-4 py-20">
           <div className="text-center mb-12 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Five calculators, endless insights
+              {t("home.calculatorsTitle")}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Each tool is designed to give you clarity on a specific aspect of
-              your project's finances.
+              {t("home.calculatorsSubtitle")}
             </p>
           </div>
 
@@ -162,10 +159,10 @@ const Index = () => {
         <section className="container mx-auto px-4 py-20">
           <div className="text-center mb-12 animate-slide-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Trusted by indie makers
+              {t("home.testimonialsTitle")}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Join hundreds of developers making smarter business decisions
+              {t("home.testimonialsSubtitle")}
             </p>
           </div>
 
@@ -193,11 +190,10 @@ const Index = () => {
           <Card className="bg-primary text-primary-foreground border-0 animate-slide-up">
             <CardContent className="py-16 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to run the numbers?
+                {t("home.ctaTitle")}
               </h2>
               <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-                Start with the ROI calculator and see when your project becomes
-                profitable.
+                {t("home.ctaSubtitle")}
               </p>
               <Button
                 asChild
@@ -206,7 +202,7 @@ const Index = () => {
                 className="gap-2 text-base"
               >
                 <Link to="/roi-calculator">
-                  Get started free
+                  {t("home.ctaButton")}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>

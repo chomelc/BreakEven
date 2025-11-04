@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "roi": "ROI",
+    "pricing": "Tarification",
+    "churn": "Désabonnement",
+    "mrr": "MRR",
+    "retention": "Rétention",
+    "pro": "BreakEven Pro"
+  },
+  "common": {
+    "theme": "Thème",
+    "language": "Langue"
+  },
+  "home": {
+    "badge": "Conçu pour les créateurs indépendants",
+    "title": "Comprenez le",
+    "titleHighlight": "potentiel",
+    "titleSuffix": "de votre projet",
+    "subtitle": "Calculateurs financiers gratuits pour vous aider à prendre de meilleures décisions concernant les prix, la croissance et la rentabilité.",
+    "ctaCalculate": "Calculer mon ROI",
+    "ctaBrowse": "Parcourir les outils",
+    "calculatorsTitle": "Cinq calculateurs, des insights infinis",
+    "calculatorsSubtitle": "Chaque outil est conçu pour vous donner de la clarté sur un aspect spécifique des finances de votre projet.",
+    "testimonialsTitle": "Approuvé par les créateurs indépendants",
+    "testimonialsSubtitle": "Rejoignez des centaines de développeurs qui prennent de meilleures décisions commerciales",
+    "ctaTitle": "Prêt à faire les calculs ?",
+    "ctaSubtitle": "Commencez par le calculateur ROI et voyez quand votre projet devient rentable.",
+    "ctaButton": "Commencer gratuitement",
+    "calculators": {
+      "roi": {
+        "title": "Calculateur ROI",
+        "description": "Estimez quand votre projet atteint le seuil de rentabilité en fonction des coûts, des prix et de la croissance.",
+        "tier": "Core"
+      },
+      "pricing": {
+        "title": "Calculateur de prix",
+        "description": "Expérimentez avec différents prix et taux de conversion pour optimiser les revenus.",
+        "tier": "Core"
+      },
+      "churn": {
+        "title": "Calculateur de désabonnement",
+        "description": "Calculez l'impact du taux de désabonnement sur les revenus récurrents au fil du temps.",
+        "tier": "Pro"
+      },
+      "mrr": {
+        "title": "Simulateur de croissance MRR",
+        "description": "Visualisez la croissance des revenus récurrents mensuels avec des entrées ajustables.",
+        "tier": "Pro"
+      },
+      "retention": {
+        "title": "Impact de la rétention",
+        "description": "Voyez comment les améliorations de rétention affectent la valeur à vie et le profit.",
+        "tier": "Pro"
+      }
+    },
+    "testimonials": {
+      "testimonial1": "Enfin, une boîte à outils qui parle mon langage. Pas de blabla, juste des chiffres.",
+      "testimonial2": "M'a aidé à fixer le prix de mon SaaS en toute confiance. Ça vaut chaque minute.",
+      "testimonial3": "Propre, rapide et exactement ce dont j'avais besoin pour valider mes idées.",
+      "author1": "Alex Chen",
+      "author2": "Sarah Rodriguez",
+      "author3": "James Park",
+      "role1": "Créateur indépendant",
+      "role2": "Fondateur solo",
+      "role3": "Enthousiaste de projets parallèles"
+    }
+  },
+  "footer": {
+    "tagline": "Fait avec 💚 pour les créateurs indépendants et les solopreneurs"
+  },
+  "pro": {
+    "unlock": "🔒 Débloquer BreakEven Pro",
+    "support": "Soutenir",
+    "accessAllTools": "accéder à tous les outils",
+    "supportDescription": "<strong>Soutenir</strong> le développement et <strong>accéder à tous les outils</strong>",
+    "description": "BreakEven Pro inclut le Calculateur de désabonnement, le Simulateur MRR et le Calculateur de rétention, plus des exports illimités.",
+    "learnMore": "En savoir plus",
+    "getPro": "Obtenir BreakEven Pro (5$)",
+    "defaultTitle": "Débloquer BreakEven Pro - BreakEven",
+    "defaultDescription": "Soutenir le développement et débloquer les calculateurs avancés et les exports illimités avec BreakEven Pro.",
+    "titleDescription": "Obtenez BreakEven Pro pour débloquer {{title}} et d'autres outils avancés. {{subtitle}}",
+    "calculators": {
+      "churn": {
+        "title": "Calculateur de désabonnement",
+        "subtitle": "Comprenez l'impact de votre désabonnement 📊"
+      },
+      "mrr": {
+        "title": "Simulateur de croissance MRR",
+        "subtitle": "Visualisez la croissance de votre MRR 📈"
+      },
+      "retention": {
+        "title": "Calculateur d'impact de rétention",
+        "subtitle": "Voyez comment la rétention affecte la LTV 🎯"
+      }
+    }
+  },
+  "proInfo": {
+    "title": "BreakEven Pro",
+    "subtitle": "Débloquez tous les calculateurs, simulations avancées et exports illimités.",
+    "advancedTools": "Outils avancés",
+    "advancedToolsDesc": "Calculateur de désabonnement, Simulateur MRR, Calculateur de rétention",
+    "unlimitedExports": "Exports illimités",
+    "unlimitedExportsDesc": "Exportez les résultats et scénarios sans limites",
+    "simpleLicense": "Licence simple et unique",
+    "simpleLicenseDesc": "Déblocage instantané via clé de licence",
+    "youArePro": "Vous êtes Pro ✨",
+    "getProTitle": "Obtenir BreakEven Pro - Accès à vie",
+    "licenseActive": "Licence active. Profitez de toutes les fonctionnalités.",
+    "description": "Pas de frais récurrents. Votre licence débloque toutes les fonctionnalités Pro actuelles. Entrez votre clé de licence pour activer.",
+    "enterKey": "Entrer la clé de licence",
+    "activateTitle": "Activer BreakEven Pro",
+    "activateDesc": "Collez votre clé de licence ci-dessous pour débloquer toutes les fonctionnalités.",
+    "licenseKey": "Clé de licence",
+    "licenseKeyPlaceholder": "ex. BE-XXXX-XXXX",
+    "cancel": "Annuler",
+    "activate": "Activer",
+    "goToCalculators": "Aller aux calculateurs",
+    "faqTitle": "FAQ",
+    "faq1Question": "Qu'est-ce que BreakEven Pro ?",
+    "faq1Answer": "BreakEven Pro débloque les calculateurs avancés (Désabonnement, Simulateur MRR, Rétention) et les exports illimités.",
+    "faq2Question": "Comment activer ma licence ?",
+    "faq2Answer": "Cliquez sur \"Entrer la clé de licence\" ci-dessus, collez votre clé et sélectionnez Activer. Votre navigateur stocke la licence.",
+    "faq3Question": "Est-ce un abonnement ?",
+    "faq3Answer": "Non, c'est une licence unique pour les fonctionnalités Pro actuellement disponibles.",
+    "contactTitle": "Contact",
+    "contactText": "Vous rencontrez des problèmes ? Écrivez-nous à",
+    "activatedTitle": "BreakEven Pro activé !",
+    "activatedDesc": "Merci beaucoup pour votre soutien !<br />Profitez de toutes les fonctionnalités Pro.",
+    "getStarted": "Commencer"
+  },
+  "proModal": {
+    "unlockTitle": "Débloquer BreakEven Pro",
+    "limitReachedTitle": "Limite d'export atteinte",
+    "limitReachedDesc": "Vous avez atteint votre limite d'export mensuelle (5 exports). Obtenez BreakEven Pro pour des exports illimités et l'accès à tous les calculateurs avancés !",
+    "unlockDesc": "Obtenez des exports illimités et l'accès à tous les calculateurs avancés !",
+    "unlimitedExports": "Exports illimités",
+    "unlimitedExportsDesc": "Exportez vos résultats sans aucune limite mensuelle",
+    "allAdvanced": "Tous les calculateurs avancés",
+    "allAdvancedDesc": "Calculateur de désabonnement, Simulateur MRR, Calculateur de rétention",
+    "lifetimeAccess": "Accès à vie",
+    "lifetimeAccessDesc": "Paiement unique, pas de frais récurrents",
+    "maybeLater": "Peut-être plus tard",
+    "getPro": "Obtenir BreakEven Pro (5$)"
+  }
+}

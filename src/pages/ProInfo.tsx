@@ -12,8 +12,10 @@ import { hasValidLicenseKey, hasValidLicenseKeySync, saveLicenseKey } from "@/li
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import confetti from "canvas-confetti";
+import { useTranslation } from "react-i18next";
 
 const ProInfo = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [licenseKey, setLicenseKey] = useState("");
   const [alreadyPro, setAlreadyPro] = useState(() => hasValidLicenseKeySync());
@@ -84,19 +86,16 @@ const ProInfo = () => {
             <div className="text-6xl mb-2 animate-bounce">🎉</div>
             <DialogHeader>
               <DialogTitle className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
-                BreakEven Pro Activated!
+                {t("proInfo.activatedTitle")}
               </DialogTitle>
-              <DialogDescription className="text-base pt-2">
-                Thank you so much for your support!<br />
-                Enjoy all the Pro features.
-              </DialogDescription>
+              <DialogDescription className="text-base pt-2" dangerouslySetInnerHTML={{ __html: t("proInfo.activatedDesc") }} />
             </DialogHeader>
             <Button
               onClick={() => setShowThankYou(false)}
               className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2 gap-2"
             >
               <Rocket className="w-4 h-4" />
-              Get Started
+              {t("proInfo.getStarted")}
             </Button>
           </div>
         </DialogContent>
@@ -119,11 +118,10 @@ const ProInfo = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold tracking-tight mb-3">
-                BreakEven Pro
+                {t("proInfo.title")}
               </h1>
               <p className="text-lg text-muted-foreground">
-                Unlock all calculators, advanced simulations, and unlimited
-                exports.
+                {t("proInfo.subtitle")}
               </p>
             </div>
 
@@ -132,10 +130,10 @@ const ProInfo = () => {
                 <CardHeader>
                   <div className="flex items-center gap-2">
                     <Rocket className="w-5 h-5 text-emerald-600" />
-                    <CardTitle className="text-base">Advanced Tools</CardTitle>
+                    <CardTitle className="text-base">{t("proInfo.advancedTools")}</CardTitle>
                   </div>
                   <CardDescription>
-                    Churn Calculator, MRR Simulator, Retention Calculator
+                    {t("proInfo.advancedToolsDesc")}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -144,11 +142,11 @@ const ProInfo = () => {
                   <div className="flex items-center gap-2">
                     <Medal className="w-5 h-5 text-emerald-600" />
                     <CardTitle className="text-base">
-                      Unlimited Exports
+                      {t("proInfo.unlimitedExports")}
                     </CardTitle>
                   </div>
                   <CardDescription>
-                    Export results and scenarios without limits
+                    {t("proInfo.unlimitedExportsDesc")}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -157,11 +155,11 @@ const ProInfo = () => {
                   <div className="flex items-center gap-2">
                     <Lock className="w-5 h-5 text-emerald-600" />
                     <CardTitle className="text-base">
-                      Simple, One-time License
+                      {t("proInfo.simpleLicense")}
                     </CardTitle>
                   </div>
                   <CardDescription>
-                    Instant unlock via license key
+                    {t("proInfo.simpleLicenseDesc")}
                   </CardDescription>
                 </CardHeader>
               </Card>
@@ -171,17 +169,16 @@ const ProInfo = () => {
               <CardHeader>
                 <CardTitle>
                   {alreadyPro
-                    ? "You're Pro ✨"
-                    : "Get BreakEven Pro - Lifetime Access"}
+                    ? t("proInfo.youArePro")
+                    : t("proInfo.getProTitle")}
                 </CardTitle>
                 <CardDescription>
                   {alreadyPro ? (
                     <span className="inline-flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
-                      <CheckCircle2 className="w-4 h-4" /> License active. Enjoy
-                      all features.
+                      <CheckCircle2 className="w-4 h-4" /> {t("proInfo.licenseActive")}
                     </span>
                   ) : (
-                    "No recurring fees. Your license unlocks all current Pro features. Enter your license key to activate."
+                    t("proInfo.description")
                   )}
                 </CardDescription>
               </CardHeader>
@@ -195,7 +192,7 @@ const ProInfo = () => {
                         rel="noopener noreferrer"
                       >
                         <KeyRound className="w-5 h-5" />
-                        Get BreakEven Pro (5$)
+                        {t("pro.getPro")}
                       </a>
                     </Button>
                     <Dialog open={open} onOpenChange={setOpen}>
@@ -205,21 +202,21 @@ const ProInfo = () => {
                           className="inline-flex items-center justify-center rounded-md border bg-background hover:bg-accent text-foreground transition-colors gap-2 text-base"
                         >
                           <ArrowRight className="w-5 h-5" />
-                          Enter license key
+                          {t("proInfo.enterKey")}
                         </Button>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Activate BreakEven Pro</DialogTitle>
+                          <DialogTitle>{t("proInfo.activateTitle")}</DialogTitle>
                           <DialogDescription>
-                            Paste your license key below to unlock all features.
+                            {t("proInfo.activateDesc")}
                           </DialogDescription>
                         </DialogHeader>
                         <div className="space-y-2">
-                          <Label htmlFor="licenseKey">License key</Label>
+                          <Label htmlFor="licenseKey">{t("proInfo.licenseKey")}</Label>
                           <Input
                             id="licenseKey"
-                            placeholder="e.g. BE-XXXX-XXXX"
+                            placeholder={t("proInfo.licenseKeyPlaceholder")}
                             value={licenseKey}
                             onChange={(e) => setLicenseKey(e.target.value)}
                             autoFocus
@@ -230,13 +227,13 @@ const ProInfo = () => {
                             variant="ghost"
                             onClick={() => setOpen(false)}
                           >
-                            Cancel
+                            {t("proInfo.cancel")}
                           </Button>
                           <Button
                             className="bg-emerald-600 hover:bg-emerald-700 text-white"
                             onClick={handleActivate}
                           >
-                            Activate
+                            {t("proInfo.activate")}
                           </Button>
                         </DialogFooter>
                       </DialogContent>
@@ -253,7 +250,7 @@ const ProInfo = () => {
                     >
                       <Link to="/">
                         <Calculator className="w-5 h-5" />
-                        Go to calculators
+                        {t("proInfo.goToCalculators")}
                       </Link>
                     </Button>
                   </div>
@@ -263,29 +260,26 @@ const ProInfo = () => {
 
             {/* FAQ */}
             <div className="mt-12 animate-slide-up">
-              <h2 className="text-2xl font-semibold mb-4">FAQ</h2>
+              <h2 className="text-2xl font-semibold mb-4">{t("proInfo.faqTitle")}</h2>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="what-is-pro">
-                  <AccordionTrigger>What is BreakEven Pro?</AccordionTrigger>
+                  <AccordionTrigger>{t("proInfo.faq1Question")}</AccordionTrigger>
                   <AccordionContent>
-                    BreakEven Pro unlocks advanced calculators (Churn, MRR
-                    Simulator, Retention) and unlimited exports.
+                    {t("proInfo.faq1Answer")}
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="how-to-activate">
                   <AccordionTrigger>
-                    How do I activate my license?
+                    {t("proInfo.faq2Question")}
                   </AccordionTrigger>
                   <AccordionContent>
-                    Click "Enter license key" above, paste your key, and select
-                    Activate. Your browser stores the license.
+                    {t("proInfo.faq2Answer")}
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="subscription">
-                  <AccordionTrigger>Is this a subscription?</AccordionTrigger>
+                  <AccordionTrigger>{t("proInfo.faq3Question")}</AccordionTrigger>
                   <AccordionContent>
-                    No, it is a one-time license for the currently available Pro
-                    features.
+                    {t("proInfo.faq3Answer")}
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
@@ -293,9 +287,9 @@ const ProInfo = () => {
 
             {/* Contact */}
             <div className="mt-12 animate-slide-up">
-              <h2 className="text-2xl font-semibold mb-2">Contact</h2>
+              <h2 className="text-2xl font-semibold mb-2">{t("proInfo.contactTitle")}</h2>
               <p className="text-muted-foreground">
-                Facing any issues? Email us at{" "}
+                {t("proInfo.contactText")}{" "}
                 <a
                   className="text-emerald-700 dark:text-emerald-400 underline"
                   href="mailto:breakeven.calculators@gmail.com"

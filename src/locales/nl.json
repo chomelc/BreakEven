@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Start",
+    "roi": "ROI",
+    "pricing": "Prijsstelling",
+    "churn": "Churn",
+    "mrr": "MRR",
+    "retention": "Retentie",
+    "pro": "BreakEven Pro"
+  },
+  "common": {
+    "theme": "Thema",
+    "language": "Taal"
+  },
+  "home": {
+    "badge": "Gemaakt voor indie hackers",
+    "title": "Begrijp het",
+    "titleHighlight": "potentieel",
+    "titleSuffix": "van je bijproject",
+    "subtitle": "Gratis financiële rekenmachines om je te helpen slimmere beslissingen te nemen over prijsstelling, groei en winstgevendheid.",
+    "ctaCalculate": "Bereken mijn ROI",
+    "ctaBrowse": "Tools bekijken",
+    "calculatorsTitle": "Vijf rekenmachines, eindeloze inzichten",
+    "calculatorsSubtitle": "Elke tool is ontworpen om je duidelijkheid te geven over een specifiek aspect van de financiën van je project.",
+    "testimonialsTitle": "Vertrouwd door indie makers",
+    "testimonialsSubtitle": "Sluit je aan bij honderden ontwikkelaars die slimmere zakelijke beslissingen nemen",
+    "ctaTitle": "Klaar om te rekenen?",
+    "ctaSubtitle": "Begin met de ROI-rekenmachine en zie wanneer je project winstgevend wordt.",
+    "ctaButton": "Gratis beginnen",
+    "calculators": {
+      "roi": {
+        "title": "ROI Rekenmachine",
+        "description": "Schat wanneer je bijproject break-even bereikt op basis van kosten, prijsstelling en groei.",
+        "tier": "Core"
+      },
+      "pricing": {
+        "title": "Prijscalculator",
+        "description": "Experimenteer met prijspunten en conversiepercentages om de inkomsten te optimaliseren.",
+        "tier": "Core"
+      },
+      "churn": {
+        "title": "Churn Calculator",
+        "description": "Bereken de impact van churn percentage op terugkerende inkomsten in de loop van de tijd.",
+        "tier": "Pro"
+      },
+      "mrr": {
+        "title": "MRR Groei Simulator",
+        "description": "Visualiseer maandelijkse terugkerende inkomsten groei met aanpasbare invoer.",
+        "tier": "Pro"
+      },
+      "retention": {
+        "title": "Retentie Impact",
+        "description": "Zie hoe retentieverbeteringen de levenslange waarde en winst beïnvloeden.",
+        "tier": "Pro"
+      }
+    },
+    "testimonials": {
+      "testimonial1": "Eindelijk een toolkit die mijn taal spreekt. Geen onzin, gewoon cijfers.",
+      "testimonial2": "Hielp me mijn SaaS met vertrouwen te prijzen. Elke minuut waard.",
+      "testimonial3": "Schoon, snel en precies wat ik nodig had om mijn ideeën te valideren.",
+      "author1": "Alex Chen",
+      "author2": "Sarah Rodriguez",
+      "author3": "James Park",
+      "role1": "Indie Maker",
+      "role2": "Solo Founder",
+      "role3": "Bijproject Enthousiast"
+    }
+  },
+  "footer": {
+    "tagline": "Gemaakt met 💚 voor indie hackers en solopreneurs"
+  },
+  "pro": {
+    "unlock": "🔒 Ontgrendel BreakEven Pro",
+    "support": "Ondersteunen",
+    "accessAllTools": "toegang tot alle tools",
+    "supportDescription": "<strong>Ondersteun</strong> de ontwikkeling en <strong>krijg toegang tot alle tools</strong>",
+    "description": "BreakEven Pro omvat de Churn Calculator, MRR Simulator en Retentie Calculator, plus onbeperkte exports.",
+    "learnMore": "Meer informatie",
+    "getPro": "Krijg BreakEven Pro (5$)",
+    "defaultTitle": "Ontgrendel BreakEven Pro - BreakEven",
+    "defaultDescription": "Ondersteun de ontwikkeling en ontgrendel geavanceerde rekenmachines en onbeperkte exports met BreakEven Pro.",
+    "titleDescription": "Krijg BreakEven Pro om {{title}} en andere geavanceerde tools te ontgrendelen. {{subtitle}}",
+    "calculators": {
+      "churn": {
+        "title": "Churn Calculator",
+        "subtitle": "Begrijp je churn impact 📊"
+      },
+      "mrr": {
+        "title": "MRR Groei Simulator",
+        "subtitle": "Visualiseer je MRR groei 📈"
+      },
+      "retention": {
+        "title": "Retentie Impact Calculator",
+        "subtitle": "Zie hoe retentie LTV beïnvloedt 🎯"
+      }
+    }
+  },
+  "proInfo": {
+    "title": "BreakEven Pro",
+    "subtitle": "Ontgrendel alle rekenmachines, geavanceerde simulaties en onbeperkte exports.",
+    "advancedTools": "Geavanceerde Tools",
+    "advancedToolsDesc": "Churn Calculator, MRR Simulator, Retentie Calculator",
+    "unlimitedExports": "Onbeperkte Exports",
+    "unlimitedExportsDesc": "Exporteer resultaten en scenario's zonder limieten",
+    "simpleLicense": "Eenvoudige, eenmalige licentie",
+    "simpleLicenseDesc": "Directe ontgrendeling via licentiecode",
+    "youArePro": "Je bent Pro ✨",
+    "getProTitle": "Krijg BreakEven Pro - Levenslange toegang",
+    "licenseActive": "Licentie actief. Geniet van alle functies.",
+    "description": "Geen terugkerende kosten. Je licentie ontgrendelt alle huidige Pro-functies. Voer je licentiecode in om te activeren.",
+    "enterKey": "Voer licentiecode in",
+    "activateTitle": "Activeer BreakEven Pro",
+    "activateDesc": "Plak je licentiecode hieronder om alle functies te ontgrendelen.",
+    "licenseKey": "Licentiecode",
+    "licenseKeyPlaceholder": "bijv. BE-XXXX-XXXX",
+    "cancel": "Annuleren",
+    "activate": "Activeren",
+    "goToCalculators": "Ga naar rekenmachines",
+    "faqTitle": "FAQ",
+    "faq1Question": "Wat is BreakEven Pro?",
+    "faq1Answer": "BreakEven Pro ontgrendelt geavanceerde rekenmachines (Churn, MRR Simulator, Retentie) en onbeperkte exports.",
+    "faq2Question": "Hoe activeer ik mijn licentie?",
+    "faq2Answer": "Klik op \"Voer licentiecode in\" hierboven, plak je code en selecteer Activeren. Je browser slaat de licentie op.",
+    "faq3Question": "Is dit een abonnement?",
+    "faq3Answer": "Nee, het is een eenmalige licentie voor de momenteel beschikbare Pro-functies.",
+    "contactTitle": "Contact",
+    "contactText": "Problemen? E-mail ons op",
+    "activatedTitle": "BreakEven Pro geactiveerd!",
+    "activatedDesc": "Heel erg bedankt voor je steun!<br />Geniet van alle Pro-functies.",
+    "getStarted": "Aan de slag"
+  },
+  "proModal": {
+    "unlockTitle": "Ontgrendel BreakEven Pro",
+    "limitReachedTitle": "Exportlimiet bereikt",
+    "limitReachedDesc": "Je hebt je maandelijkse exportlimiet bereikt (5 exports). Krijg BreakEven Pro voor onbeperkte exports en toegang tot alle geavanceerde rekenmachines!",
+    "unlockDesc": "Krijg onbeperkte exports en toegang tot alle geavanceerde rekenmachines!",
+    "unlimitedExports": "Onbeperkte Exports",
+    "unlimitedExportsDesc": "Exporteer je resultaten zonder maandelijkse limieten",
+    "allAdvanced": "Alle geavanceerde rekenmachines",
+    "allAdvancedDesc": "Churn Calculator, MRR Simulator, Retentie Calculator",
+    "lifetimeAccess": "Levenslange toegang",
+    "lifetimeAccessDesc": "Eenmalige betaling, geen terugkerende kosten",
+    "maybeLater": "Misschien later",
+    "getPro": "Krijg BreakEven Pro (5$)"
+  }
+}

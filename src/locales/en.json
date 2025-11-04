@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Home",
+    "roi": "ROI",
+    "pricing": "Pricing",
+    "churn": "Churn",
+    "mrr": "MRR",
+    "retention": "Retention",
+    "pro": "BreakEven Pro"
+  },
+  "common": {
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "home": {
+    "badge": "Built for indie hackers",
+    "title": "Understand your side project's",
+    "titleHighlight": "potential",
+    "titleSuffix": "",
+    "subtitle": "Free financial calculators to help you make smarter decisions about pricing, growth, and profitability.",
+    "ctaCalculate": "Calculate my ROI",
+    "ctaBrowse": "Browse tools",
+    "calculatorsTitle": "Five calculators, endless insights",
+    "calculatorsSubtitle": "Each tool is designed to give you clarity on a specific aspect of your project's finances.",
+    "testimonialsTitle": "Trusted by indie makers",
+    "testimonialsSubtitle": "Join hundreds of developers making smarter business decisions",
+    "ctaTitle": "Ready to run the numbers?",
+    "ctaSubtitle": "Start with the ROI calculator and see when your project becomes profitable.",
+    "ctaButton": "Get started free",
+    "calculators": {
+      "roi": {
+        "title": "ROI Calculator",
+        "description": "Estimate when your side project breaks even based on costs, pricing, and growth.",
+        "tier": "Core"
+      },
+      "pricing": {
+        "title": "Pricing Calculator",
+        "description": "Experiment with price points and conversion rates to optimize revenue.",
+        "tier": "Core"
+      },
+      "churn": {
+        "title": "Churn Calculator",
+        "description": "Compute the impact of churn rate on recurring revenue over time.",
+        "tier": "Pro"
+      },
+      "mrr": {
+        "title": "MRR Growth Simulator",
+        "description": "Visualize monthly recurring revenue growth with adjustable inputs.",
+        "tier": "Pro"
+      },
+      "retention": {
+        "title": "Retention Impact",
+        "description": "See how retention improvements affect lifetime value and profit.",
+        "tier": "Pro"
+      }
+    },
+    "testimonials": {
+      "testimonial1": "Finally, a toolkit that speaks my language. No BS, just numbers.",
+      "testimonial2": "Helped me price my SaaS with confidence. Worth every minute.",
+      "testimonial3": "Clean, fast, and exactly what I needed to validate my ideas.",
+      "author1": "Alex Chen",
+      "author2": "Sarah Rodriguez",
+      "author3": "James Park",
+      "role1": "Indie Maker",
+      "role2": "Solo Founder",
+      "role3": "Side Project Enthusiast"
+    }
+  },
+  "footer": {
+    "tagline": "Made with 💚 for indie hackers and solopreneurs"
+  },
+  "pro": {
+    "unlock": "🔒 Unlock BreakEven Pro",
+    "support": "Support",
+    "accessAllTools": "access all tools",
+    "supportDescription": "<strong>Support</strong> development and <strong>access all tools</strong>",
+    "description": "BreakEven Pro includes the Churn Calculator, MRR Simulator, and Retention Calculator, plus unlimited exports.",
+    "learnMore": "Learn more",
+    "getPro": "Get BreakEven Pro (5$)",
+    "defaultTitle": "Unlock BreakEven Pro - BreakEven",
+    "defaultDescription": "Support development and unlock advanced calculators and unlimited exports with BreakEven Pro.",
+    "titleDescription": "Get BreakEven Pro to unlock {{title}} and other advanced tools. {{subtitle}}",
+    "calculators": {
+      "churn": {
+        "title": "Churn Calculator",
+        "subtitle": "Understand your churn impact 📊"
+      },
+      "mrr": {
+        "title": "MRR Growth Simulator",
+        "subtitle": "Visualize your MRR growth 📈"
+      },
+      "retention": {
+        "title": "Retention Impact Calculator",
+        "subtitle": "See how retention affects LTV 🎯"
+      }
+    }
+  },
+  "proInfo": {
+    "title": "BreakEven Pro",
+    "subtitle": "Unlock all calculators, advanced simulations, and unlimited exports.",
+    "advancedTools": "Advanced Tools",
+    "advancedToolsDesc": "Churn Calculator, MRR Simulator, Retention Calculator",
+    "unlimitedExports": "Unlimited Exports",
+    "unlimitedExportsDesc": "Export results and scenarios without limits",
+    "simpleLicense": "Simple, One-time License",
+    "simpleLicenseDesc": "Instant unlock via license key",
+    "youArePro": "You're Pro ✨",
+    "getProTitle": "Get BreakEven Pro - Lifetime Access",
+    "licenseActive": "License active. Enjoy all features.",
+    "description": "No recurring fees. Your license unlocks all current Pro features. Enter your license key to activate.",
+    "enterKey": "Enter license key",
+    "activateTitle": "Activate BreakEven Pro",
+    "activateDesc": "Paste your license key below to unlock all features.",
+    "licenseKey": "License key",
+    "licenseKeyPlaceholder": "e.g. BE-XXXX-XXXX",
+    "cancel": "Cancel",
+    "activate": "Activate",
+    "goToCalculators": "Go to calculators",
+    "faqTitle": "FAQ",
+    "faq1Question": "What is BreakEven Pro?",
+    "faq1Answer": "BreakEven Pro unlocks advanced calculators (Churn, MRR Simulator, Retention) and unlimited exports.",
+    "faq2Question": "How do I activate my license?",
+    "faq2Answer": "Click \"Enter license key\" above, paste your key, and select Activate. Your browser stores the license.",
+    "faq3Question": "Is this a subscription?",
+    "faq3Answer": "No, it is a one-time license for the currently available Pro features.",
+    "contactTitle": "Contact",
+    "contactText": "Facing any issues? Email us at",
+    "activatedTitle": "BreakEven Pro Activated!",
+    "activatedDesc": "Thank you so much for your support!<br />Enjoy all the Pro features.",
+    "getStarted": "Get Started"
+  },
+  "proModal": {
+    "unlockTitle": "Unlock BreakEven Pro",
+    "limitReachedTitle": "Export Limit Reached",
+    "limitReachedDesc": "You've reached your monthly export limit (5 exports). Get BreakEven Pro for unlimited exports and access to all advanced calculators!",
+    "unlockDesc": "Get unlimited exports and access to all advanced calculators!",
+    "unlimitedExports": "Unlimited Exports",
+    "unlimitedExportsDesc": "Export your results without any monthly limits",
+    "allAdvanced": "All Advanced Calculators",
+    "allAdvancedDesc": "Churn Calculator, MRR Simulator, Retention Calculator",
+    "lifetimeAccess": "Lifetime Access",
+    "lifetimeAccessDesc": "One-time payment, no recurring fees",
+    "maybeLater": "Maybe Later",
+    "getPro": "Get BreakEven Pro (5$)"
+  }
+}

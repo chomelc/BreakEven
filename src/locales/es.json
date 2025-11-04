@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "roi": "ROI",
+    "pricing": "Precios",
+    "churn": "Abandono",
+    "mrr": "MRR",
+    "retention": "Retención",
+    "pro": "BreakEven Pro"
+  },
+  "common": {
+    "theme": "Tema",
+    "language": "Idioma"
+  },
+  "home": {
+    "badge": "Creado para creadores independientes",
+    "title": "Comprende el",
+    "titleHighlight": "potencial",
+    "titleSuffix": "de tu proyecto paralelo",
+    "subtitle": "Calculadoras financieras gratuitas para ayudarte a tomar decisiones más inteligentes sobre precios, crecimiento y rentabilidad.",
+    "ctaCalculate": "Calcular mi ROI",
+    "ctaBrowse": "Explorar herramientas",
+    "calculatorsTitle": "Cinco calculadoras, conocimientos infinitos",
+    "calculatorsSubtitle": "Cada herramienta está diseñada para darte claridad sobre un aspecto específico de las finanzas de tu proyecto.",
+    "testimonialsTitle": "Confiado por creadores independientes",
+    "testimonialsSubtitle": "Únete a cientos de desarrolladores que toman decisiones comerciales más inteligentes",
+    "ctaTitle": "¿Listo para hacer los cálculos?",
+    "ctaSubtitle": "Comienza con la calculadora ROI y ve cuándo tu proyecto se vuelve rentable.",
+    "ctaButton": "Empezar gratis",
+    "calculators": {
+      "roi": {
+        "title": "Calculadora ROI",
+        "description": "Estima cuándo tu proyecto paralelo alcanza el punto de equilibrio basado en costos, precios y crecimiento.",
+        "tier": "Core"
+      },
+      "pricing": {
+        "title": "Calculadora de precios",
+        "description": "Experimenta con puntos de precio y tasas de conversión para optimizar los ingresos.",
+        "tier": "Core"
+      },
+      "churn": {
+        "title": "Calculadora de abandono",
+        "description": "Calcula el impacto de la tasa de abandono en los ingresos recurrentes a lo largo del tiempo.",
+        "tier": "Pro"
+      },
+      "mrr": {
+        "title": "Simulador de crecimiento MRR",
+        "description": "Visualiza el crecimiento de ingresos recurrentes mensuales con entradas ajustables.",
+        "tier": "Pro"
+      },
+      "retention": {
+        "title": "Impacto de retención",
+        "description": "Ve cómo las mejoras de retención afectan el valor de por vida y el beneficio.",
+        "tier": "Pro"
+      }
+    },
+    "testimonials": {
+      "testimonial1": "Finalmente, un conjunto de herramientas que habla mi idioma. Sin tonterías, solo números.",
+      "testimonial2": "Me ayudó a fijar el precio de mi SaaS con confianza. Vale cada minuto.",
+      "testimonial3": "Limpio, rápido y exactamente lo que necesitaba para validar mis ideas.",
+      "author1": "Alex Chen",
+      "author2": "Sarah Rodriguez",
+      "author3": "James Park",
+      "role1": "Creador independiente",
+      "role2": "Fundador solitario",
+      "role3": "Entusiasta de proyectos paralelos"
+    }
+  },
+  "footer": {
+    "tagline": "Hecho con 💚 para creadores independientes y solopreneurs"
+  },
+  "pro": {
+    "unlock": "🔒 Desbloquear BreakEven Pro",
+    "support": "Apoyar",
+    "accessAllTools": "acceder a todas las herramientas",
+    "supportDescription": "<strong>Apoya</strong> el desarrollo y <strong>accede a todas las herramientas</strong>",
+    "description": "BreakEven Pro incluye la Calculadora de abandono, Simulador MRR y Calculadora de retención, además de exportaciones ilimitadas.",
+    "learnMore": "Saber más",
+    "getPro": "Obtener BreakEven Pro (5$)",
+    "defaultTitle": "Desbloquear BreakEven Pro - BreakEven",
+    "defaultDescription": "Apoya el desarrollo y desbloquea calculadoras avanzadas y exportaciones ilimitadas con BreakEven Pro.",
+    "titleDescription": "Obtén BreakEven Pro para desbloquear {{title}} y otras herramientas avanzadas. {{subtitle}}",
+    "calculators": {
+      "churn": {
+        "title": "Calculadora de abandono",
+        "subtitle": "Comprende el impacto de tu abandono 📊"
+      },
+      "mrr": {
+        "title": "Simulador de crecimiento MRR",
+        "subtitle": "Visualiza el crecimiento de tu MRR 📈"
+      },
+      "retention": {
+        "title": "Calculadora de impacto de retención",
+        "subtitle": "Ve cómo la retención afecta el LTV 🎯"
+      }
+    }
+  },
+  "proInfo": {
+    "title": "BreakEven Pro",
+    "subtitle": "Desbloquea todas las calculadoras, simulaciones avanzadas y exportaciones ilimitadas.",
+    "advancedTools": "Herramientas avanzadas",
+    "advancedToolsDesc": "Calculadora de abandono, Simulador MRR, Calculadora de retención",
+    "unlimitedExports": "Exportaciones ilimitadas",
+    "unlimitedExportsDesc": "Exporta resultados y escenarios sin límites",
+    "simpleLicense": "Licencia simple y única",
+    "simpleLicenseDesc": "Desbloqueo instantáneo mediante clave de licencia",
+    "youArePro": "Eres Pro ✨",
+    "getProTitle": "Obtener BreakEven Pro - Acceso de por vida",
+    "licenseActive": "Licencia activa. Disfruta de todas las funciones.",
+    "description": "Sin tarifas recurrentes. Tu licencia desbloquea todas las funciones Pro actuales. Ingresa tu clave de licencia para activar.",
+    "enterKey": "Ingresar clave de licencia",
+    "activateTitle": "Activar BreakEven Pro",
+    "activateDesc": "Pega tu clave de licencia a continuación para desbloquear todas las funciones.",
+    "licenseKey": "Clave de licencia",
+    "licenseKeyPlaceholder": "ej. BE-XXXX-XXXX",
+    "cancel": "Cancelar",
+    "activate": "Activar",
+    "goToCalculators": "Ir a las calculadoras",
+    "faqTitle": "FAQ",
+    "faq1Question": "¿Qué es BreakEven Pro?",
+    "faq1Answer": "BreakEven Pro desbloquea calculadoras avanzadas (Abandono, Simulador MRR, Retención) y exportaciones ilimitadas.",
+    "faq2Question": "¿Cómo activo mi licencia?",
+    "faq2Answer": "Haz clic en \"Ingresar clave de licencia\" arriba, pega tu clave y selecciona Activar. Tu navegador almacena la licencia.",
+    "faq3Question": "¿Es una suscripción?",
+    "faq3Answer": "No, es una licencia única para las funciones Pro actualmente disponibles.",
+    "contactTitle": "Contacto",
+    "contactText": "¿Tienes algún problema? Escríbenos a",
+    "activatedTitle": "¡BreakEven Pro activado!",
+    "activatedDesc": "¡Muchas gracias por tu apoyo!<br />Disfruta de todas las funciones Pro.",
+    "getStarted": "Comenzar"
+  },
+  "proModal": {
+    "unlockTitle": "Desbloquear BreakEven Pro",
+    "limitReachedTitle": "Límite de exportación alcanzado",
+    "limitReachedDesc": "Has alcanzado tu límite mensual de exportaciones (5 exportaciones). ¡Obtén BreakEven Pro para exportaciones ilimitadas y acceso a todas las calculadoras avanzadas!",
+    "unlockDesc": "¡Obtén exportaciones ilimitadas y acceso a todas las calculadoras avanzadas!",
+    "unlimitedExports": "Exportaciones ilimitadas",
+    "unlimitedExportsDesc": "Exporta tus resultados sin límites mensuales",
+    "allAdvanced": "Todas las calculadoras avanzadas",
+    "allAdvancedDesc": "Calculadora de abandono, Simulador MRR, Calculadora de retención",
+    "lifetimeAccess": "Acceso de por vida",
+    "lifetimeAccessDesc": "Pago único, sin tarifas recurrentes",
+    "maybeLater": "Tal vez más tarde",
+    "getPro": "Obtener BreakEven Pro (5$)"
+  }
+}

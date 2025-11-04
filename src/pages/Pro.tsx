@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import { Info, KeyRound } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type ProProps = {
   title?: string;
@@ -11,14 +12,15 @@ type ProProps = {
 };
 
 const Pro = ({ title, subtitle }: ProProps) => {
+  const { t } = useTranslation();
   const location = useLocation();
 
   const computedTitle = title
-    ? `${title} - BreakEven Pro`
-    : "Unlock BreakEven Pro - BreakEven";
+    ? `${title} - ${t("proInfo.title")}`
+    : t("pro.defaultTitle");
   const computedDescription = title
-    ? `Get BreakEven Pro to unlock ${title} and other advanced tools. ${subtitle ?? ""}`.trim()
-    : "Support development and unlock advanced calculators and unlimited exports with BreakEven Pro.";
+    ? t("pro.titleDescription", { title, subtitle: subtitle ?? "" }).replace(/\s+/g, " ").trim()
+    : t("pro.defaultDescription");
   const canonicalUrl = `https://breakeven.dev${location.pathname}`;
 
   return (
@@ -47,18 +49,15 @@ const Pro = ({ title, subtitle }: ProProps) => {
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
             <Card className="border-2">
               <CardHeader>
-                <CardTitle>🔒 Unlock BreakEven Pro</CardTitle>
-                <CardDescription>
-                  <p className="text-base text-muted-foreground">
-                    <strong>Support</strong> development and{" "}
-                    <strong>access all tools</strong>
-                  </p>
-                </CardDescription>
+                <CardTitle>{t("pro.unlock")}</CardTitle>
+                <CardDescription
+                  className="text-base text-muted-foreground"
+                  dangerouslySetInnerHTML={{ __html: t("pro.supportDescription") }}
+                />
               </CardHeader>
               <CardContent className="space-y-4">
                 <p>
-                  BreakEven Pro includes the Churn Calculator, MRR Simulator,
-                  and Retention Calculator, plus unlimited exports.
+                  {t("pro.description")}
                 </p>
                 <div className="flex items-center justify-center gap-4 flex-col sm:flex-row">
                   <Button
@@ -69,7 +68,7 @@ const Pro = ({ title, subtitle }: ProProps) => {
                   >
                     <Link to="/pro">
                       <Info className="w-5 h-5" />
-                      Learn more
+                      {t("pro.learnMore")}
                     </Link>
                   </Button>
                   <Button asChild className="gap-2">
@@ -79,7 +78,7 @@ const Pro = ({ title, subtitle }: ProProps) => {
                       rel="noopener noreferrer"
                     >
                       <KeyRound className="w-5 h-5" />
-                      Get BreakEven Pro (5$)
+                      {t("pro.getPro")}
                     </a>
                   </Button>
                 </div>

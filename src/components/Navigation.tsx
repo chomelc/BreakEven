@@ -11,17 +11,21 @@ import {
   KeyRound,
   Sun,
   Moon,
+  Globe,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageToggle } from "./LanguageToggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { hasValidLicenseKeySync, isPro } from "@/lib/license";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const { t } = useTranslation();
   const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
 
   useEffect(() => {
@@ -43,13 +47,13 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { path: "/", label: "Home", icon: Home },
-    { path: "/roi-calculator", label: "ROI", icon: Calculator },
-    { path: "/pricing-calculator", label: "Pricing", icon: DollarSign },
-    { path: "/churn-calculator", label: "Churn", icon: Users },
-    { path: "/mrr-simulator", label: "MRR", icon: TrendingUp },
-    { path: "/retention-calculator", label: "Retention", icon: Target },
-    { path: "/pro", label: "BreakEven Pro", icon: KeyRound },
+    { path: "/", label: t("nav.home"), icon: Home },
+    { path: "/roi-calculator", label: t("nav.roi"), icon: Calculator },
+    { path: "/pricing-calculator", label: t("nav.pricing"), icon: DollarSign },
+    { path: "/churn-calculator", label: t("nav.churn"), icon: Users },
+    { path: "/mrr-simulator", label: t("nav.mrr"), icon: TrendingUp },
+    { path: "/retention-calculator", label: t("nav.retention"), icon: Target },
+    { path: "/pro", label: t("nav.pro"), icon: KeyRound },
   ];
 
   return (
@@ -152,14 +156,21 @@ const Navigation = () => {
                     })}
                   </div>
 
-                  <div className="mt-6">
+                  <div className="mt-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Globe className="h-4 w-4" />
+                        <span className="text-sm">{t("common.language")}</span>
+                      </div>
+                      <LanguageToggle showLabel={true} />
+                    </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <div className="relative h-4 w-4">
                           <Sun className="absolute h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                           <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                         </div>
-                        <span className="text-sm">Theme</span>
+                        <span className="text-sm">{t("common.theme")}</span>
                       </div>
                       <Switch
                         checked={theme === "dark"}
@@ -172,7 +183,8 @@ const Navigation = () => {
               </Sheet>
             </div>
 
-            <div className="hidden sm:block">
+            <div className="hidden sm:flex items-center gap-2">
+              <LanguageToggle />
               <ThemeToggle />
             </div>
           </div>
