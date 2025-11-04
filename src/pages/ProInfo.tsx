@@ -8,28 +8,100 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { ArrowRight, CheckCircle2, Lock, Medal, Rocket, KeyRound, Calculator } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { toast } from "@/components/ui/use-toast";
-import { hasValidLicenseKey, isPro, saveLicenseKey } from "@/lib/license";
+import { hasValidLicenseKey, hasValidLicenseKeySync, saveLicenseKey } from "@/lib/license";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import confetti from "canvas-confetti";
 
 const ProInfo = () => {
   const [open, setOpen] = useState(false);
   const [licenseKey, setLicenseKey] = useState("");
-  const alreadyPro = isPro();
+  const [alreadyPro, setAlreadyPro] = useState(() => hasValidLicenseKeySync());
+  const [showThankYou, setShowThankYou] = useState(false);
 
-  const handleActivate = () => {
+  const handleActivate = async () => {
     const candidate = licenseKey.trim();
-    if (!hasValidLicenseKey(candidate)) {
+    const isValid = await hasValidLicenseKey(candidate);
+    if (!isValid) {
       toast({ title: "Invalid license key", description: "Please check your key and try again." });
       return;
     }
     saveLicenseKey(candidate);
-    toast({ title: "BreakEven Pro activated", description: "Thanks for your support!" });
+    
+    // Trigger confetti celebration
+    const duration = 3000;
+    const end = Date.now() + duration;
+
+    const colors = ['#10b981', '#059669', '#34d399', '#6ee7b7']; // emerald colors
+
+    const frame = () => {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        colors: colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        colors: colors,
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    };
+    frame();
+
+    // Update state to reflect Pro status
+    setAlreadyPro(true);
+    setLicenseKey("");
     setOpen(false);
+    
+    // Dispatch event to notify Navigation component
+    window.dispatchEvent(new CustomEvent('proStatusChanged'));
+    
+    // Show thank you modal
+    setShowThankYou(true);
   };
 
   return (
     <div className="bg-background flex flex-col min-h-screen">
+      {/* Thank You Modal */}
+      <Dialog open={showThankYou} onOpenChange={setShowThankYou}>
+        <DialogContent className="sm:max-w-md bg-background/95 border-2 border-emerald-500/20 shadow-2xl [&+div]:backdrop-blur-md">
+          <style>{`
+            [data-radix-dialog-overlay] {
+              backdrop-filter: blur(12px) !important;
+              -webkit-backdrop-filter: blur(12px) !important;
+              background-color: rgba(0, 0, 0, 0.5) !important;
+            }
+          `}</style>
+          <div className="flex flex-col items-center text-center space-y-4 py-4">
+            <div className="text-6xl mb-2 animate-bounce">🎉</div>
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                BreakEven Pro Activated!
+              </DialogTitle>
+              <DialogDescription className="text-base pt-2">
+                Thank you so much for your support!<br />
+                Enjoy all the Pro features.
+              </DialogDescription>
+            </DialogHeader>
+            <Button
+              onClick={() => setShowThankYou(false)}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white mt-2 gap-2"
+            >
+              <Rocket className="w-4 h-4" />
+              Get Started
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
       <Helmet>
         <title>BreakEven Pro - BreakEven</title>
         <meta

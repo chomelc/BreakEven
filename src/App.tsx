@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Calculator, Github } from "lucide-react";
+import { useState, useEffect } from "react";
 import Index from "./pages/Index";
 import ROICalculator from "./pages/ROICalculator";
 import PricingCalculator from "./pages/PricingCalculator";
@@ -13,10 +14,24 @@ import MRRSimulator from "./pages/MRRSimulator";
 import RetentionCalculator from "./pages/RetentionCalculator";
 import Pro from "./pages/Pro";
 import ProInfo from "./pages/ProInfo";
-import { isProEnabled } from "./lib/license";
+import { hasValidLicenseKeySync, isPro } from "./lib/license";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+// Component wrapper to handle async Pro check for routes
+const ProRoute = ({ children }: { children: React.ReactElement }) => {
+  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
+
+  useEffect(() => {
+    isPro().then(setIsProUser);
+  }, []);
+
+  if (isProUser) {
+    return children;
+  }
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,8 +49,10 @@ const App = () => (
             <Route
               path="/churn-calculator"
               element={
-                isProEnabled() ? (
-                  <ChurnCalculator />
+                hasValidLicenseKeySync() ? (
+                  <ProRoute>
+                    <ChurnCalculator />
+                  </ProRoute>
                 ) : (
                   <Pro title="Churn Calculator" subtitle="Understand your churn impact 📊" />
                 )
@@ -44,8 +61,10 @@ const App = () => (
             <Route
               path="/mrr-simulator"
               element={
-                isProEnabled() ? (
-                  <MRRSimulator />
+                hasValidLicenseKeySync() ? (
+                  <ProRoute>
+                    <MRRSimulator />
+                  </ProRoute>
                 ) : (
                   <Pro title="MRR Growth Simulator" subtitle="Visualize your MRR growth 📈" />
                 )
@@ -54,8 +73,10 @@ const App = () => (
             <Route
               path="/retention-calculator"
               element={
-                isProEnabled() ? (
-                  <RetentionCalculator />
+                hasValidLicenseKeySync() ? (
+                  <ProRoute>
+                    <RetentionCalculator />
+                  </ProRoute>
                 ) : (
                   <Pro title="Retention Impact Calculator" subtitle="See how retention affects LTV 🎯" />
                 )

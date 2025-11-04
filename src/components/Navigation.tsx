@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   Calculator,
   TrendingUp,
@@ -14,13 +15,32 @@ import {
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { isPro } from "@/lib/license";
+import { hasValidLicenseKeySync, isPro } from "@/lib/license";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
 
 const Navigation = () => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
+  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
+
+  useEffect(() => {
+    // Validate on mount and update state
+    isPro().then(setIsProUser);
+    
+    // Listen for Pro status changes
+    const handleProStatusChange = () => {
+      setIsProUser(hasValidLicenseKeySync());
+      // Also do async validation to be sure
+      isPro().then(setIsProUser);
+    };
+    
+    window.addEventListener('proStatusChanged', handleProStatusChange);
+    
+    return () => {
+      window.removeEventListener('proStatusChanged', handleProStatusChange);
+    };
+  }, []);
 
   const navItems = [
     { path: "/", label: "Home", icon: Home },
@@ -44,7 +64,7 @@ const Navigation = () => {
               BreakEven
             </span>
             <span>
-              {isPro() && (
+              {isProUser && (
                 <span className="text-[10px] px-1.5 py-0.5 rounded border bg-primary/10 text-primary border-primary/20">
                   Pro
                 </span>
@@ -97,7 +117,7 @@ const Navigation = () => {
                     </div>
                     <span className="font-semibold text-lg flex items-center gap-2">
                       BreakEven
-                      {isPro() && (
+                      {isProUser && (
                         <span className="text-[10px] px-1.5 py-0.5 rounded border bg-primary/10 text-primary border-primary/20">
                           Pro
                         </span>
