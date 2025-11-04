@@ -47,55 +47,77 @@ const ProRoute = ({ children }: { children: React.ReactElement }) => {
   return null;
 };
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <HelmetProvider>
-        <BrowserRouter>
-          <div className="min-h-screen flex flex-col">
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/pro" element={<ProInfo />} />
-            <Route path="/roi-calculator" element={<ROICalculator />} />
-            <Route path="/pricing-calculator" element={<PricingCalculator />} />
-            <Route
-              path="/churn-calculator"
-              element={
-                hasValidLicenseKeySync() ? (
-                  <ProRoute>
-                    <ChurnCalculator />
-                  </ProRoute>
-                ) : (
-                  <Pro title="Churn Calculator" subtitle="Understand your churn impact 📊" />
-                )
-              }
-            />
-            <Route
-              path="/mrr-simulator"
-              element={
-                hasValidLicenseKeySync() ? (
-                  <ProRoute>
-                    <MRRSimulator />
-                  </ProRoute>
-                ) : (
-                  <Pro title="MRR Growth Simulator" subtitle="Visualize your MRR growth 📈" />
-                )
-              }
-            />
-            <Route
-              path="/retention-calculator"
-              element={
-                hasValidLicenseKeySync() ? (
-                  <ProRoute>
-                    <RetentionCalculator />
-                  </ProRoute>
-                ) : (
-                  <Pro title="Retention Impact Calculator" subtitle="See how retention affects LTV 🎯" />
-                )
-              }
-            />
+const App = () => {
+  // Track pro status at App level to make routes reactive
+  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
+
+  useEffect(() => {
+    // Validate on mount and update state
+    isPro().then(setIsProUser);
+    
+    // Listen for Pro status changes
+    const handleProStatusChange = () => {
+      setIsProUser(hasValidLicenseKeySync());
+      // Also do async validation to be sure
+      isPro().then(setIsProUser);
+    };
+    
+    window.addEventListener('proStatusChanged', handleProStatusChange);
+    
+    return () => {
+      window.removeEventListener('proStatusChanged', handleProStatusChange);
+    };
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <HelmetProvider>
+          <BrowserRouter>
+            <div className="min-h-screen flex flex-col">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/pro" element={<ProInfo />} />
+              <Route path="/roi-calculator" element={<ROICalculator />} />
+              <Route path="/pricing-calculator" element={<PricingCalculator />} />
+              <Route
+                path="/churn-calculator"
+                element={
+                  isProUser ? (
+                    <ProRoute>
+                      <ChurnCalculator />
+                    </ProRoute>
+                  ) : (
+                    <Pro title="Churn Calculator" subtitle="Understand your churn impact 📊" />
+                  )
+                }
+              />
+              <Route
+                path="/mrr-simulator"
+                element={
+                  isProUser ? (
+                    <ProRoute>
+                      <MRRSimulator />
+                    </ProRoute>
+                  ) : (
+                    <Pro title="MRR Growth Simulator" subtitle="Visualize your MRR growth 📈" />
+                  )
+                }
+              />
+              <Route
+                path="/retention-calculator"
+                element={
+                  isProUser ? (
+                    <ProRoute>
+                      <RetentionCalculator />
+                    </ProRoute>
+                  ) : (
+                    <Pro title="Retention Impact Calculator" subtitle="See how retention affects LTV 🎯" />
+                  )
+                }
+              />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -146,6 +168,7 @@ const App = () => (
       </HelmetProvider>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  );
+};
 
 export default App;
