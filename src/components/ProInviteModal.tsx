@@ -21,7 +21,13 @@ export const ProInviteModal = ({ open, onOpenChange, isLimitReached = false }: P
           }
         `}</style>
         <DialogHeader>
-          <DialogTitle className={`text-2xl font-bold flex items-center gap-2 ${isLimitReached ? 'text-orange-600 dark:text-orange-400' : 'text-emerald-600 dark:text-emerald-400'}`}>
+          <DialogTitle
+            className={`text-2xl font-bold flex items-center gap-2 ${
+              isLimitReached
+                ? "text-orange-600 dark:text-orange-400"
+                : "text-emerald-600 dark:text-emerald-400"
+            }`}
+          >
             {isLimitReached ? (
               <>
                 <AlertCircle className="w-6 h-6" />
@@ -37,16 +43,16 @@ export const ProInviteModal = ({ open, onOpenChange, isLimitReached = false }: P
           <DialogDescription className="text-base pt-2">
             {isLimitReached ? (
               <>
-                You've reached your monthly export limit (5 exports). Get BreakEven Pro for unlimited exports and access to all advanced calculators!
+                You've reached your monthly export limit (5 exports). Get
+                BreakEven Pro for unlimited exports and access to all advanced
+                calculators!
               </>
             ) : (
-              <>
-                Get unlimited exports and access to all advanced calculators!
-              </>
+              <>Get unlimited exports and access to all advanced calculators!</>
             )}
           </DialogDescription>
         </DialogHeader>
-        
+
         <div className="space-y-4 py-4">
           <div className="grid gap-3">
             <div className="flex items-start gap-3">
@@ -91,10 +97,16 @@ export const ProInviteModal = ({ open, onOpenChange, isLimitReached = false }: P
             asChild
             className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2 w-full sm:w-auto"
           >
-            <Link to="/pro">
-              <KeyRound className="w-4 h-4" />
-              Get BreakEven Pro
-            </Link>
+            <Button asChild className="gap-2">
+              <a
+                href="https://www.buymeacoffee.com/breakeven"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <KeyRound className="w-5 h-5" />
+                Get BreakEven Pro (5$)
+              </a>
+            </Button>
           </Button>
         </DialogFooter>
       </DialogContent>
