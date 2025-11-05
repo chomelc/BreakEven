@@ -10,7 +10,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Download, FileImage, Clipboard, Link } from "lucide-react";
 import {
   BarChart,
   Bar,
@@ -27,7 +26,9 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
-import { Helmet } from "react-helmet-async";
+import { PageMeta } from "@/components/PageMeta";
+import { CalculatorActions } from "@/components/CalculatorActions";
+import { CHART_TOOLTIP_STYLE } from "@/lib/chartConfig";
 import { ProInviteModal } from "@/components/ProInviteModal";
 import { useTranslation } from "react-i18next";
 
@@ -153,14 +154,7 @@ const PricingCalculator = () => {
   return (
     <div className="min-h-screen bg-background">
       <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
-      <Helmet>
-        <title>{t("pricing.meta.title")}</title>
-        <meta name="description" content={t("pricing.meta.description")} />
-        <link rel="canonical" href="https://breakeven.dev/pricing-calculator" />
-        <meta property="og:title" content={t("pricing.meta.title")} />
-        <meta property="og:description" content={t("pricing.meta.description")} />
-        <meta property="og:url" content="https://breakeven.dev/pricing-calculator" />
-      </Helmet>
+      <PageMeta namespace="pricing" path="/pricing-calculator" />
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
@@ -170,24 +164,13 @@ const PricingCalculator = () => {
               <h1 className="text-4xl font-bold mb-3">{t("pricing.title")}</h1>
               <p className="text-xl text-muted-foreground">{t("pricing.subtitle")}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button onClick={handleCopySummary} variant="outline" size="sm">
-                <Clipboard className="w-4 h-4" />
-                {t("pricing.actions.copySummary")}
-              </Button>
-              <Button onClick={handleShareLink} variant="outline" size="sm">
-                <Link className="w-4 h-4" />
-                {t("pricing.actions.shareLink")}
-              </Button>
-              <Button onClick={handleExportPNG} variant="outline" size="sm">
-                <FileImage className="w-4 h-4" />
-                {t("pricing.actions.png")}
-              </Button>
-              <Button onClick={handleExportPDF} variant="outline" size="sm">
-                <Download className="w-4 h-4" />
-                {t("pricing.actions.pdf")}
-              </Button>
-            </div>
+            <CalculatorActions
+              namespace="pricing"
+              onCopySummary={handleCopySummary}
+              onShareLink={handleShareLink}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
           </div>
         </div>
 
@@ -263,13 +246,7 @@ const PricingCalculator = () => {
                       position: "insideLeft",
                     }}
                   />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "8px",
-                    }}
-                  />
+                  <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                   <Bar
                     dataKey="mrr"
                     fill="hsl(var(--chart-1))"

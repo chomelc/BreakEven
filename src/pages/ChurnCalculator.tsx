@@ -10,7 +10,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Download, FileImage, Clipboard, Link } from "lucide-react";
 import {
   LineChart,
   Line,
@@ -28,7 +27,9 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
-import { Helmet } from "react-helmet-async";
+import { PageMeta } from "@/components/PageMeta";
+import { CalculatorActions } from "@/components/CalculatorActions";
+import { CHART_TOOLTIP_STYLE } from "@/lib/chartConfig";
 import { useTranslation } from "react-i18next";
 
 const ChurnCalculator = () => {
@@ -146,14 +147,7 @@ const ChurnCalculator = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{t("churn.meta.title")}</title>
-        <meta name="description" content={t("churn.meta.description")} />
-        <link rel="canonical" href="https://breakeven.dev/churn-calculator" />
-        <meta property="og:title" content={t("churn.meta.title")} />
-        <meta property="og:description" content={t("churn.meta.description")} />
-        <meta property="og:url" content="https://breakeven.dev/churn-calculator" />
-      </Helmet>
+      <PageMeta namespace="churn" path="/churn-calculator" />
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
@@ -163,24 +157,13 @@ const ChurnCalculator = () => {
               <h1 className="text-4xl font-bold mb-3">{t("pro.calculators.churn.title")}</h1>
               <p className="text-xl text-muted-foreground">{t("pro.calculators.churn.subtitle")}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button onClick={handleCopySummary} variant="outline" size="sm">
-                <Clipboard className="w-4 h-4" />
-                {t("churn.actions.copySummary")}
-              </Button>
-              <Button onClick={handleShareLink} variant="outline" size="sm">
-                <Link className="w-4 h-4" />
-                {t("churn.actions.shareLink")}
-              </Button>
-              <Button onClick={handleExportPNG} variant="outline" size="sm">
-                <FileImage className="w-4 h-4" />
-                {t("churn.actions.png")}
-              </Button>
-              <Button onClick={handleExportPDF} variant="outline" size="sm">
-                <Download className="w-4 h-4" />
-                {t("churn.actions.pdf")}
-              </Button>
-            </div>
+            <CalculatorActions
+              namespace="churn"
+              onCopySummary={handleCopySummary}
+              onShareLink={handleShareLink}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
           </div>
         </div>
 
@@ -278,13 +261,7 @@ const ChurnCalculator = () => {
                       position: "insideRight",
                     }}
                   />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "8px",
-                    }}
-                  />
+                  <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                   <Legend />
                   <Line
                     yAxisId="left"

@@ -334,7 +334,9 @@
       "exportedPdfTitle": "Exported to PDF",
       "exportedPdfDesc": "Your MRR simulation has been exported successfully.",
       "summaryCopiedTitle": "Summary copied!",
-      "summaryCopiedDesc": "Ready to share your MRR projection."
+      "summaryCopiedDesc": "Ready to share your MRR projection.",
+      "linkCopiedTitle": "Link copied!",
+      "linkCopiedDesc": "Share this link to show your projection."
     },
     "summary": "📈 My MRR growth projection\nStarting MRR: ${{startingMRR}}\nNew MRR/month: ${{newMRR}}\nChurn rate: {{churnRate}}%\nExpansion rate: {{expansionRate}}%\nMRR after 12 months: ${{finalMRR}}\nTotal growth: {{growth}}%\nTry it yourself at https://breakeven.dev"
   }
@@ -382,7 +384,9 @@
       "exportedPdfTitle": "Exported to PDF",
       "exportedPdfDesc": "Your retention analysis has been exported successfully.",
       "summaryCopiedTitle": "Summary copied!",
-      "summaryCopiedDesc": "Ready to share your retention analysis."
+      "summaryCopiedDesc": "Ready to share your retention analysis.",
+      "linkCopiedTitle": "Link copied!",
+      "linkCopiedDesc": "Share this link to show your analysis."
     },
     "summary": "🎯 My retention impact analysis\nMonthly price: ${{monthlyPrice}}\nRetention rate: {{retentionRate}}%\nCustomer lifetime: {{lifetime}} months\nCustomer LTV: ${{ltv}}\nCAC: ${{cac}}\nLTV:CAC ratio: {{ratio}}:1\nBreak-even: {{breakEven}} months\nTry it yourself at https://breakeven.dev"
   }

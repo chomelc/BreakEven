@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Download, FileImage, Clipboard, Link } from "lucide-react";
@@ -29,7 +28,9 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
-import { Helmet } from "react-helmet-async";
+import { PageMeta } from "@/components/PageMeta";
+import { CalculatorActions } from "@/components/CalculatorActions";
+import { CHART_TOOLTIP_STYLE } from "@/lib/chartConfig";
 import { ProInviteModal } from "@/components/ProInviteModal";
 import { useTranslation } from "react-i18next";
 
@@ -172,14 +173,7 @@ const ROICalculator = () => {
   return (
     <div className="min-h-screen bg-background">
       <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
-      <Helmet>
-        <title>{t("roi.meta.title")}</title>
-        <meta name="description" content={t("roi.meta.description")} />
-        <link rel="canonical" href="https://breakeven.dev/roi-calculator" />
-        <meta property="og:title" content={t("roi.meta.title")} />
-        <meta property="og:description" content={t("roi.meta.description")} />
-        <meta property="og:url" content="https://breakeven.dev/roi-calculator" />
-      </Helmet>
+      <PageMeta namespace="roi" path="/roi-calculator" />
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
@@ -189,24 +183,13 @@ const ROICalculator = () => {
               <h1 className="text-4xl font-bold mb-3">{t("roi.title")}</h1>
               <p className="text-xl text-muted-foreground">{t("roi.subtitle")}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button onClick={handleCopySummary} variant="outline" size="sm">
-                <Clipboard className="w-4 h-4" />
-                {t("roi.actions.copySummary")}
-              </Button>
-              <Button onClick={handleShareLink} variant="outline" size="sm">
-                <Link className="w-4 h-4" />
-                {t("roi.actions.shareLink")}
-              </Button>
-              <Button onClick={handleExportPNG} variant="outline" size="sm">
-                <FileImage className="w-4 h-4" />
-                {t("roi.actions.png")}
-              </Button>
-              <Button onClick={handleExportPDF} variant="outline" size="sm">
-                <Download className="w-4 h-4" />
-                {t("roi.actions.pdf")}
-              </Button>
-            </div>
+            <CalculatorActions
+              namespace="roi"
+              onCopySummary={handleCopySummary}
+              onShareLink={handleShareLink}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
           </div>
         </div>
 
@@ -310,13 +293,7 @@ const ROICalculator = () => {
                       position: "insideLeft",
                     }}
                   />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "8px",
-                    }}
-                  />
+                  <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                   <ReferenceLine
                     y={0}
                     stroke="hsl(var(--muted-foreground))"

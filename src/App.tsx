@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Calculator, Github } from "lucide-react";
-import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Index from "./pages/Index";
 import ROICalculator from "./pages/ROICalculator";
@@ -15,7 +14,7 @@ import MRRSimulator from "./pages/MRRSimulator";
 import RetentionCalculator from "./pages/RetentionCalculator";
 import Pro from "./pages/Pro";
 import ProInfo from "./pages/ProInfo";
-import { hasValidLicenseKeySync, isPro } from "./lib/license";
+import { useProStatus } from "./hooks/useProStatus";
 import NotFound from "./pages/NotFound";
 
 const ProRouteWrapper = ({ calculatorKey }: { calculatorKey: "churn" | "mrr" | "retention" }) => {
@@ -31,19 +30,7 @@ const ProRouteWrapper = ({ calculatorKey }: { calculatorKey: "churn" | "mrr" | "
 const queryClient = new QueryClient();
 
 const ProRoute = ({ children }: { children: React.ReactElement }) => {
-  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
-
-  useEffect(() => {
-    isPro().then(setIsProUser);
-    const handleProStatusChange = () => {
-      setIsProUser(hasValidLicenseKeySync());
-      isPro().then(setIsProUser);
-    };
-    window.addEventListener('proStatusChanged', handleProStatusChange);
-    return () => {
-      window.removeEventListener('proStatusChanged', handleProStatusChange);
-    };
-  }, []);
+  const isProUser = useProStatus();
 
   if (isProUser) {
     return children;
@@ -99,19 +86,7 @@ const Footer = () => {
 };
 
 const App = () => {
-  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
-
-  useEffect(() => {
-    isPro().then(setIsProUser);
-    const handleProStatusChange = () => {
-      setIsProUser(hasValidLicenseKeySync());
-      isPro().then(setIsProUser);
-    };
-    window.addEventListener('proStatusChanged', handleProStatusChange);
-    return () => {
-      window.removeEventListener('proStatusChanged', handleProStatusChange);
-    };
-  }, []);
+  const isProUser = useProStatus();
 
   return (
     <QueryClientProvider client={queryClient}>

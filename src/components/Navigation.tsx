@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 import {
   Calculator,
   TrendingUp,
@@ -17,34 +16,16 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./ThemeToggle";
 import { LanguageToggle } from "./LanguageToggle";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { hasValidLicenseKeySync, isPro } from "@/lib/license";
 import { useTheme } from "next-themes";
 import { Switch } from "@/components/ui/switch";
 import { useTranslation } from "react-i18next";
+import { useProStatus } from "@/hooks/useProStatus";
 
 const Navigation = () => {
   const location = useLocation();
   const { theme, setTheme } = useTheme();
   const { t } = useTranslation();
-  const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
-
-  useEffect(() => {
-    // Validate on mount and update state
-    isPro().then(setIsProUser);
-    
-    // Listen for Pro status changes
-    const handleProStatusChange = () => {
-      setIsProUser(hasValidLicenseKeySync());
-      // Also do async validation to be sure
-      isPro().then(setIsProUser);
-    };
-    
-    window.addEventListener('proStatusChanged', handleProStatusChange);
-    
-    return () => {
-      window.removeEventListener('proStatusChanged', handleProStatusChange);
-    };
-  }, []);
+  const isProUser = useProStatus();
 
   const navItems = [
     { path: "/", label: t("nav.home"), icon: Home },

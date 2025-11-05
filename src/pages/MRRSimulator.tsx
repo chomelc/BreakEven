@@ -10,7 +10,6 @@ import {
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Download, FileImage, Clipboard, Link } from "lucide-react";
 import {
   AreaChart,
   Area,
@@ -28,7 +27,9 @@ import {
   getUrlParams,
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
-import { Helmet } from "react-helmet-async";
+import { PageMeta } from "@/components/PageMeta";
+import { CalculatorActions } from "@/components/CalculatorActions";
+import { CHART_TOOLTIP_STYLE } from "@/lib/chartConfig";
 import { useTranslation } from "react-i18next";
 
 const MRRSimulator = () => {
@@ -106,8 +107,8 @@ const MRRSimulator = () => {
     const success = await copyToClipboard(url);
     if (success) {
       toast({
-        title: "Link copied!",
-        description: "Share this link to show your projection.",
+        title: t("mrr.toasts.linkCopiedTitle"),
+        description: t("mrr.toasts.linkCopiedDesc"),
       });
     }
   };
@@ -148,14 +149,7 @@ const MRRSimulator = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{t("mrr.meta.title")}</title>
-        <meta name="description" content={t("mrr.meta.description")} />
-        <link rel="canonical" href="https://breakeven.dev/mrr-simulator" />
-        <meta property="og:title" content={t("mrr.meta.title")} />
-        <meta property="og:description" content={t("mrr.meta.description")} />
-        <meta property="og:url" content="https://breakeven.dev/mrr-simulator" />
-      </Helmet>
+      <PageMeta namespace="mrr" path="/mrr-simulator" />
       <Navigation />
 
       <main className="container mx-auto px-4 py-12 max-w-4xl">
@@ -165,24 +159,13 @@ const MRRSimulator = () => {
               <h1 className="text-4xl font-bold mb-3">{t("pro.calculators.mrr.title")}</h1>
               <p className="text-xl text-muted-foreground">{t("pro.calculators.mrr.subtitle")}</p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Button onClick={handleCopySummary} variant="outline" size="sm">
-                <Clipboard className="w-4 h-4" />
-                {t("mrr.actions.copySummary")}
-              </Button>
-              <Button onClick={handleShareLink} variant="outline" size="sm">
-                <Link className="w-4 h-4" />
-                {t("mrr.actions.shareLink")}
-              </Button>
-              <Button onClick={handleExportPNG} variant="outline" size="sm">
-                <FileImage className="w-4 h-4" />
-                {t("mrr.actions.png")}
-              </Button>
-              <Button onClick={handleExportPDF} variant="outline" size="sm">
-                <Download className="w-4 h-4" />
-                {t("mrr.actions.pdf")}
-              </Button>
-            </div>
+            <CalculatorActions
+              namespace="mrr"
+              onCopySummary={handleCopySummary}
+              onShareLink={handleShareLink}
+              onExportPNG={handleExportPNG}
+              onExportPDF={handleExportPDF}
+            />
           </div>
         </div>
 
@@ -270,13 +253,7 @@ const MRRSimulator = () => {
                       position: "insideLeft",
                     }}
                   />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "hsl(var(--card))",
-                      border: "1px solid hsl(var(--border))",
-                      borderRadius: "8px",
-                    }}
-                  />
+                  <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                   <Legend />
                   <Area
                     type="monotone"
