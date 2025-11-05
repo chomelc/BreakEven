@@ -11,11 +11,11 @@ Free financial calculators to help indie hackers and solopreneurs make smarter d
 
 [![BreakEven Hero](public/og-image.png)](https://breakeven.dev)
 
-## What is BreakEven?
+## 💡 What is BreakEven?
 
 BreakEven is a collection of five powerful calculators designed specifically for side project creators. Whether you're validating an idea, optimizing pricing, or planning for growth, these tools give you the clarity you need to make data-driven decisions.
 
-## Features
+## ✨ Features
 
 - **ROI Calculator** (Core) - Estimate when your side project breaks even based on costs, pricing, and growth projections
 - **Pricing Calculator** (Core) - Experiment with different price points and conversion rates to optimize revenue
@@ -29,7 +29,7 @@ Each calculator includes:
 - Export to PDF and PNG formats
 - Dark mode support
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 Built with modern web technologies:
 
@@ -46,7 +46,7 @@ Built with modern web technologies:
 - 🧭 **i18next-browser-languagedetector** - Language detection (navigator/localStorage)
 - 🔐 **License Key System** - Pro feature validation with SHA256 hashing
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```
 /
@@ -64,13 +64,13 @@ Built with modern web technologies:
 └─ README.md
 ```
 
-## Getting Started
+## 🚀 Getting Started
 
-### Prerequisites
+### ✅ Prerequisites
 
 - Node.js 18+ and npm
 
-### Installation
+### 📦 Installation
 
 1. Clone the repository
 ```bash
@@ -90,7 +90,7 @@ npm run dev
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
-### Build for Production
+### 🏗️ Build for Production
 
 ```bash
 npm run build
@@ -98,13 +98,13 @@ npm run build
 
 The `dist` folder will contain the production-ready build.
 
-### Preview Production Build
+### 🔍 Preview Production Build
 
 ```bash
 npm run preview
 ```
 
-## Internationalization (i18n)
+## 🌐 Internationalization (i18n)
 
 BreakEven supports multiple languages using `i18next`, `react-i18next`, and `i18next-browser-languagedetector`.
 
@@ -113,12 +113,12 @@ BreakEven supports multiple languages using `i18next`, `react-i18next`, and `i18
 - **Detection**: language is detected via `localStorage` and the browser (`navigator`), cached in `localStorage`
 - **Manual switching**: use the in-app language toggle
 
-### Add a new language
+### ➕ Add a new language
 1. Create `src/locales/<lang>.json`
 2. Import and register it in `src/lib/i18n.ts` under `resources`
 3. (Optional) Expose it in the language toggle UI if needed
 
-## Available Scripts
+## 📜 Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -126,7 +126,7 @@ BreakEven supports multiple languages using `i18next`, `react-i18next`, and `i18
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
 
-## Releasing
+## 🏷️ Releasing
 
 Simple manual flow:
 
@@ -149,7 +149,7 @@ Simple manual flow:
 
 Deploy according to your hosting setup (e.g., upload `dist/` or use CI).
 
-## Deployment (GitHub Pages)
+## 📤 Deployment (GitHub Pages)
 
 Vite apps on GitHub Pages need the correct `base` path when the site is served from a subpath (e.g., `username.github.io/REPO`).
 
@@ -192,7 +192,7 @@ Optional: GitHub Actions
 
 - Add a workflow that builds and deploys `dist/` to `gh-pages` on push to `main`.
 
-## Code Style
+## 🧹 Code Style
 
 - TypeScript-first; avoid `any` and unsafe casts
 - Prefer small, focused components and descriptive names
@@ -200,7 +200,7 @@ Optional: GitHub Actions
 - Match existing formatting; run `npm run lint` before commit
 - Keep comments for non-obvious rationale, not restating code
 
-## Contributing
+## 🤝 Contributing
 
 Thanks for your interest in contributing! To get started:
 
@@ -224,28 +224,34 @@ Thanks for your interest in contributing! To get started:
 
 By contributing, you agree to the licensing terms below.
 
-## Licensing
+## 📝 Licensing
 
 - Core: Licensed under Apache-2.0. See `LICENSE`.
 - Pro: Commercial license. See `EULA.md`.
 
-### Enabling Pro Features
+### 🔓 Enabling Pro Features (Honor System)
 
-Pro features are protected by a license key system. To enable Pro features locally:
+This project is a portfolio/learning showcase. Pro feature checks are intentionally client-side and rely on trust rather than hard enforcement.
 
-1. **Using License Keys**: The application validates license keys by comparing SHA256 hashes against a list of valid keys stored in `/public/valid-keys.json`. Enter a valid license key in the Pro section to unlock Pro calculators.
+How it works today:
 
-2. **Development Mode** (Optional): For local development, you can set an environment flag to bypass license checks:
+1. **License Keys (for demo UX)**: The app compares entered keys (SHA256) with hashes in `/public/valid-keys.json`. This file is public by design to demonstrate the flow. It is not meant for real security.
+
+2. **Development Mode** (Optional): To explore everything locally, you can bypass checks:
    ```bash
    echo "VITE_PRO_ENABLED=true" > .env.local
    npm run dev
    ```
 
-When Pro features are not enabled, navigating to Pro routes (`/churn-calculator`, `/mrr-simulator`, `/retention-calculator`) shows an upsell page.
-
-**Note**: In production, license validation should be enforced server-side. The client-side validation is for UX purposes and should be complemented with server-side checks.
+3. **Upsell UX**: Without a key, Pro routes (`/churn-calculator`, `/mrr-simulator`, `/retention-calculator`) display an informational page and invitation to support.
 
 ---
+
+## 🤔 Why this approach?
+
+- I want to keep the repo open and transparent, and invite support rather than lock features down.
+- There is no server component; any checks are purely for user experience, not for strong protection.
+- If you enjoy the tools, please consider supporting the project, it helps me keep improving it.
 
 Made with 💚 for indie hackers and solopreneurs. If you find this project helpful, consider supporting it:
 
