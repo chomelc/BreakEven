@@ -18,7 +18,6 @@ import ProInfo from "./pages/ProInfo";
 import { hasValidLicenseKeySync, isPro } from "./lib/license";
 import NotFound from "./pages/NotFound";
 
-// Wrapper component to use translations in routes
 const ProRouteWrapper = ({ calculatorKey }: { calculatorKey: "churn" | "mrr" | "retention" }) => {
   const { t } = useTranslation();
   return (
@@ -31,23 +30,16 @@ const ProRouteWrapper = ({ calculatorKey }: { calculatorKey: "churn" | "mrr" | "
 
 const queryClient = new QueryClient();
 
-// Component wrapper to handle async Pro check for routes
 const ProRoute = ({ children }: { children: React.ReactElement }) => {
   const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
 
   useEffect(() => {
-    // Validate on mount and update state
     isPro().then(setIsProUser);
-    
-    // Listen for Pro status changes
     const handleProStatusChange = () => {
       setIsProUser(hasValidLicenseKeySync());
-      // Also do async validation to be sure
       isPro().then(setIsProUser);
     };
-    
     window.addEventListener('proStatusChanged', handleProStatusChange);
-    
     return () => {
       window.removeEventListener('proStatusChanged', handleProStatusChange);
     };
@@ -107,22 +99,15 @@ const Footer = () => {
 };
 
 const App = () => {
-  // Track pro status at App level to make routes reactive
   const [isProUser, setIsProUser] = useState(() => hasValidLicenseKeySync());
 
   useEffect(() => {
-    // Validate on mount and update state
     isPro().then(setIsProUser);
-    
-    // Listen for Pro status changes
     const handleProStatusChange = () => {
       setIsProUser(hasValidLicenseKeySync());
-      // Also do async validation to be sure
       isPro().then(setIsProUser);
     };
-    
     window.addEventListener('proStatusChanged', handleProStatusChange);
-    
     return () => {
       window.removeEventListener('proStatusChanged', handleProStatusChange);
     };

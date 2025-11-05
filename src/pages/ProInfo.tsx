@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowRight, CheckCircle2, Lock, Medal, Rocket, KeyRound, Calculator } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { hasValidLicenseKey, hasValidLicenseKeySync, saveLicenseKey } from "@/lib/license";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -29,12 +29,10 @@ const ProInfo = () => {
       return;
     }
     saveLicenseKey(candidate);
-    
-    // Trigger confetti celebration
     const duration = 3000;
     const end = Date.now() + duration;
 
-    const colors = ['#10b981', '#059669', '#34d399', '#6ee7b7']; // emerald colors
+    const colors = ['#10b981', '#059669', '#34d399', '#6ee7b7'];
 
     const frame = () => {
       confetti({
@@ -58,15 +56,12 @@ const ProInfo = () => {
     };
     frame();
 
-    // Update state to reflect Pro status
     setAlreadyPro(true);
     setLicenseKey("");
     setOpen(false);
     
-    // Dispatch event to notify Navigation component
     window.dispatchEvent(new CustomEvent('proStatusChanged'));
-    
-    // Show thank you modal
+
     setShowThankYou(true);
   };
 
