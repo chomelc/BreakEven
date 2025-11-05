@@ -29,9 +29,11 @@ import {
 } from "@/lib/shareUtils";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const ChurnCalculator = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [initialCustomers, setInitialCustomers] = useState(100);
   const [monthlyPrice, setMonthlyPrice] = useState(50);
   const [churnRate, setChurnRate] = useState(5);
@@ -54,16 +56,16 @@ const ChurnCalculator = () => {
   const handleExportPNG = async () => {
     await exportToPNG("churn-export-area", "churn-calculator-export");
     toast({
-      title: "Exported to PNG",
-      description: "Your churn analysis has been exported successfully.",
+      title: t("churn.toasts.exportedPngTitle"),
+      description: t("churn.toasts.exportedPngDesc"),
     });
   };
 
   const handleExportPDF = async () => {
     await exportToPDF("churn-export-area", "churn-calculator-export");
     toast({
-      title: "Exported to PDF",
-      description: "Your churn analysis has been exported successfully.",
+      title: t("churn.toasts.exportedPdfTitle"),
+      description: t("churn.toasts.exportedPdfDesc"),
     });
   };
 
@@ -74,21 +76,21 @@ const ChurnCalculator = () => {
       initialCustomers - finalData.customers + newCustomers * 12;
     const monthlyLoss = initialCustomers * (churnRate / 100) * monthlyPrice;
 
-    const summary = `📊 My churn impact analysis
-Initial customers: ${initialCustomers.toLocaleString()}
-Monthly churn rate: ${churnRate}%
-Price per customer: $${monthlyPrice}
-New customers/month: ${newCustomers}
-Customers after 12 months: ${Math.round(finalData.customers).toLocaleString()}
-Monthly revenue loss: $${Math.round(monthlyLoss).toLocaleString()}
-Annual revenue lost to churn: $${Math.round(monthlyLoss * 12).toLocaleString()}
-Try it yourself at https://breakeven.dev`;
+    const summary = t("churn.summary", {
+      initial: initialCustomers.toLocaleString(),
+      churnRate,
+      monthlyPrice,
+      newCustomers,
+      finalCustomers: Math.round(finalData.customers).toLocaleString(),
+      monthlyLoss: Math.round(monthlyLoss).toLocaleString(),
+      annualLoss: Math.round(monthlyLoss * 12).toLocaleString(),
+    });
 
     const success = await copyToClipboard(summary);
     if (success) {
       toast({
-        title: "Summary copied!",
-        description: "Ready to share your churn analysis.",
+        title: t("churn.toasts.summaryCopiedTitle"),
+        description: t("churn.toasts.summaryCopiedDesc"),
       });
     }
   };
@@ -104,8 +106,8 @@ Try it yourself at https://breakeven.dev`;
     const success = await copyToClipboard(url);
     if (success) {
       toast({
-        title: "Link copied!",
-        description: "Share this link to show your analysis.",
+        title: t("churn.toasts.linkCopiedTitle"),
+        description: t("churn.toasts.linkCopiedDesc"),
       });
     }
   };
@@ -145,11 +147,11 @@ Try it yourself at https://breakeven.dev`;
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>Churn Calculator - BreakEven</title>
-        <meta name="description" content="Understand the impact of customer churn on your recurring revenue over time." />
+        <title>{t("churn.meta.title")}</title>
+        <meta name="description" content={t("churn.meta.description")} />
         <link rel="canonical" href="https://breakeven.dev/churn-calculator" />
-        <meta property="og:title" content="Churn Calculator - BreakEven" />
-        <meta property="og:description" content="Understand the impact of customer churn on your recurring revenue over time." />
+        <meta property="og:title" content={t("churn.meta.title")} />
+        <meta property="og:description" content={t("churn.meta.description")} />
         <meta property="og:url" content="https://breakeven.dev/churn-calculator" />
       </Helmet>
       <Navigation />
@@ -158,27 +160,25 @@ Try it yourself at https://breakeven.dev`;
         <div className="mb-8 animate-slide-up">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold mb-3">Churn Calculator</h1>
-              <p className="text-xl text-muted-foreground">
-                Understand your churn impact 📊
-              </p>
+              <h1 className="text-4xl font-bold mb-3">{t("pro.calculators.churn.title")}</h1>
+              <p className="text-xl text-muted-foreground">{t("pro.calculators.churn.subtitle")}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Button onClick={handleCopySummary} variant="outline" size="sm">
                 <Clipboard className="w-4 h-4" />
-                Copy Summary
+                {t("churn.actions.copySummary")}
               </Button>
               <Button onClick={handleShareLink} variant="outline" size="sm">
                 <Link className="w-4 h-4" />
-                Share Link
+                {t("churn.actions.shareLink")}
               </Button>
               <Button onClick={handleExportPNG} variant="outline" size="sm">
                 <FileImage className="w-4 h-4" />
-                PNG
+                {t("churn.actions.png")}
               </Button>
               <Button onClick={handleExportPDF} variant="outline" size="sm">
                 <Download className="w-4 h-4" />
-                PDF
+                {t("churn.actions.pdf")}
               </Button>
             </div>
           </div>
@@ -187,14 +187,12 @@ Try it yourself at https://breakeven.dev`;
         <div id="churn-export-area" className="grid gap-8 animate-fade-in">
           <Card>
             <CardHeader>
-              <CardTitle>Your Metrics ⚙️</CardTitle>
-              <CardDescription>Adjust to match your business</CardDescription>
+              <CardTitle>{t("churn.inputs.title")}</CardTitle>
+              <CardDescription>{t("churn.inputs.description")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-3">
-                <Label htmlFor="initialCustomers">
-                  Initial Customers: {initialCustomers}
-                </Label>
+                <Label htmlFor="initialCustomers">{t("churn.inputs.initialCustomers", { value: initialCustomers })}</Label>
                 <Slider
                   id="initialCustomers"
                   min={10}
@@ -206,9 +204,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="monthlyPrice">
-                  Monthly Price per Customer: ${monthlyPrice}
-                </Label>
+                <Label htmlFor="monthlyPrice">{t("churn.inputs.monthlyPrice", { value: monthlyPrice })}</Label>
                 <Slider
                   id="monthlyPrice"
                   min={5}
@@ -220,9 +216,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="churnRate">
-                  Monthly Churn Rate: {churnRate}%
-                </Label>
+                <Label htmlFor="churnRate">{t("churn.inputs.churnRate", { value: churnRate })}</Label>
                 <Slider
                   id="churnRate"
                   min={0}
@@ -234,9 +228,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="newCustomers">
-                  New Customers per Month: {newCustomers}
-                </Label>
+                <Label htmlFor="newCustomers">{t("churn.inputs.newCustomers", { value: newCustomers })}</Label>
                 <Slider
                   id="newCustomers"
                   min={0}
@@ -251,13 +243,8 @@ Try it yourself at https://breakeven.dev`;
 
           <Card>
             <CardHeader>
-              <CardTitle>
-                You're losing ${monthlyChurnImpact.toLocaleString()}/month to
-                churn 📉
-              </CardTitle>
-              <CardDescription>
-                Customer count and revenue impact over 12 months
-              </CardDescription>
+              <CardTitle>{t("churn.chart.title", { monthlyLoss: monthlyChurnImpact.toLocaleString() })}</CardTitle>
+              <CardDescription>{t("churn.chart.description")}</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
@@ -269,7 +256,7 @@ Try it yourself at https://breakeven.dev`;
                   <XAxis
                     dataKey="month"
                     label={{
-                      value: "Month",
+                      value: t("churn.chart.xAxis"),
                       position: "insideBottom",
                       offset: -5,
                     }}
@@ -277,7 +264,7 @@ Try it yourself at https://breakeven.dev`;
                   <YAxis
                     yAxisId="left"
                     label={{
-                      value: "Customers",
+                      value: t("churn.chart.yAxisLeft"),
                       angle: -90,
                       position: "insideLeft",
                     }}
@@ -286,7 +273,7 @@ Try it yourself at https://breakeven.dev`;
                     yAxisId="right"
                     orientation="right"
                     label={{
-                      value: "MRR ($)",
+                      value: t("churn.chart.yAxisRight"),
                       angle: 90,
                       position: "insideRight",
                     }}
@@ -305,7 +292,7 @@ Try it yourself at https://breakeven.dev`;
                     dataKey="customers"
                     stroke="hsl(var(--chart-1))"
                     strokeWidth={3}
-                    name="Customers"
+                    name={t("churn.series.customers")}
                     dot={false}
                   />
                   <Line
@@ -314,7 +301,7 @@ Try it yourself at https://breakeven.dev`;
                     dataKey="mrr"
                     stroke="hsl(var(--chart-4))"
                     strokeWidth={3}
-                    name="MRR"
+                    name={t("churn.series.mrr")}
                     dot={false}
                   />
                 </LineChart>
@@ -322,25 +309,19 @@ Try it yourself at https://breakeven.dev`;
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 p-4 bg-accent/50 rounded-lg">
                 <div>
-                  <p className="text-sm text-muted-foreground">
-                    Final Customers
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t("churn.stats.finalCustomers")}</p>
                   <p className="text-2xl font-bold text-primary">
                     {finalData.customers}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">
-                    Monthly Churn Loss
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t("churn.stats.monthlyLoss")}</p>
                   <p className="text-2xl font-bold">
                     ${monthlyChurnImpact.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">
-                    Annual Churn Impact
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t("churn.stats.annualImpact")}</p>
                   <p className="text-2xl font-bold text-destructive">
                     ${(monthlyChurnImpact * 12).toLocaleString()}
                   </p>

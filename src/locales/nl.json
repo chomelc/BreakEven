@@ -141,6 +141,68 @@
     "lifetimeAccess": "Levenslange toegang",
     "lifetimeAccessDesc": "Eenmalige betaling, geen terugkerende kosten",
     "maybeLater": "Misschien later",
-    "getPro": "Krijg BreakEven Pro (5$)"
-  }
+  "getPro": "Krijg BreakEven Pro (5$)"
+  },
+  
+"roi": {
+  "meta": {"title": "ROI-calculator - BreakEven", "description": "Schat wanneer je project break-even draait op basis van kosten, prijs en groei."},
+  "title": "ROI-calculator",
+  "subtitle": "Schat wanneer je break-even gaat 💰",
+  "actions": {"copySummary": "Samenvatting kopiëren", "shareLink": "Link delen", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Jouw aannames ⚙️", "description": "Pas de cijfers aan voor jouw project", "setupCost": "Opstartkosten: ${{value}}", "monthlyCost": "Maandelijkse kosten: ${{value}}", "price": "Prijs per gebruiker/maand: ${{value}}", "initialUsers": "Initiële gebruikers: {{value}}", "growthRate": "Maandelijkse groeipercentage: {{value}}%"},
+  "chart": {"titleWithBreakEven": "Break-even in {{months}} maanden 🎉", "titleNoBreakEven": "Blijf groeien om break-even te halen 📈", "description": "Omzet vs. kosten over 24 maanden", "xAxis": "Maand", "yAxis": "Bedrag ($)"},
+  "series": {"revenue": "Omzet", "cost": "Kosten", "profit": "Winst"},
+  "stats": {"finalRevenue": "Eindomzet", "totalCost": "Totale kosten", "finalUsers": "Eindgebruikers"},
+  "toasts": {"exportedPngTitle": "Geëxporteerd naar PNG", "exportedPngDesc": "Je ROI-berekening is succesvol geëxporteerd.", "exportedPdfTitle": "Geëxporteerd naar PDF", "exportedPdfDesc": "Je ROI-berekening is succesvol geëxporteerd.", "summaryCopiedTitle": "Samenvatting gekopieerd!", "summaryCopiedDesc": "Klaar om je ROI-berekening te delen.", "linkCopiedTitle": "Link gekopieerd!", "linkCopiedDesc": "Deel deze link om je berekening te tonen."},
+  "summary": "💰 Mijn project is break-even in {{breakEven}} maanden\nOpstartkosten: ${{setupCost}}\nMaandelijkse kosten: ${{monthlyCost}}\nPrijs per gebruiker: ${{price}}\nInitiële gebruikers: {{initialUsers}}\nGroei: {{growthRate}}%/maand\nWinst na 24 maanden: ${{finalProfit}}\nProbeer zelf op https://breakeven.dev",
+  "moreThan24": "meer dan 24"
+},
+"pricing": {
+  "meta": {"title": "Prijscalculator - BreakEven", "description": "Experimenteer met prijsniveaus en conversieratio's om omzet te optimaliseren."},
+  "title": "Prijscalculator",
+  "subtitle": "Vind je optimale prijs 💵",
+  "actions": {"copySummary": "Samenvatting kopiëren", "shareLink": "Link delen", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Jouw verkeer & conversie ⚙️", "description": "Pas je aannames aan", "visitors": "Maandelijkse bezoekers: {{value}}", "conversion": "Basisconversie: {{value}}%", "price": "Jouw doelprijs: ${{value}}"},
+  "chart": {"title": "Bij ${{price}}/maand maak je ${{mrr}}/maand 🎯", "description": "Vergelijk prijsniveaus en hun impact op MRR", "xAxis": "Prijsniveau", "yAxis": "MRR ($)"},
+  "series": {"mrr": "Maandelijkse terugkerende omzet"},
+  "stats": {"users": "Betalende klanten", "annual": "Jaaromzet"},
+  "toasts": {"exportedPngTitle": "Geëxporteerd naar PNG", "exportedPngDesc": "Je prijzanalyse is succesvol geëxporteerd.", "exportedPdfTitle": "Geëxporteerd naar PDF", "exportedPdfDesc": "Je prijzanalyse is succesvol geëxporteerd.", "summaryCopiedTitle": "Samenvatting gekopieerd!", "summaryCopiedDesc": "Klaar om je prijzanalyse te delen.", "linkCopiedTitle": "Link gekopieerd!", "linkCopiedDesc": "Deel deze link om je analyse te tonen."},
+  "summary": "💵 Mijn prijsanalyse\nMaandelijkse bezoekers: {{visitors}}\nBasisconversie: {{conversionRate}}%\nDoelprijs: ${{pricePoint}}\nBetalende klanten: {{users}}\nMaandelijkse omzet: ${{mrr}}\nJaaromzet: ${{annual}}\nProbeer zelf op https://breakeven.dev"
+},
+"churn": {
+  "meta": {"title": "Churn-calculator - BreakEven", "description": "Begrijp de impact van churn op je terugkerende omzet in de tijd."},
+  "title": "Churn-calculator",
+  "subtitle": "Begrijp je churn-impact 📊",
+  "actions": {"copySummary": "Samenvatting kopiëren", "shareLink": "Link delen", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Jouw metrics ⚙️", "description": "Pas aan voor je bedrijf", "initialCustomers": "Initiële klanten: {{value}}", "monthlyPrice": "Maandprijs per klant: ${{value}}", "churnRate": "Maandelijkse churn: {{value}}%", "newCustomers": "Nieuwe klanten per maand: {{value}}"},
+  "chart": {"title": "Je verliest ${{monthlyLoss}}/maand door churn 📉", "description": "Klantenaantal en omzetimpact over 12 maanden", "xAxis": "Maand", "yAxisLeft": "Klanten", "yAxisRight": "MRR ($)"},
+  "series": {"customers": "Klanten", "mrr": "MRR"},
+  "stats": {"finalCustomers": "Eindklanten", "monthlyLoss": "Maandelijkse churn-verlies", "annualImpact": "Jaarlijkse churn-impact"},
+  "toasts": {"exportedPngTitle": "Geëxporteerd naar PNG", "exportedPngDesc": "Je churnanalyse is succesvol geëxporteerd.", "exportedPdfTitle": "Geëxporteerd naar PDF", "exportedPdfDesc": "Je churnanalyse is succesvol geëxporteerd.", "summaryCopiedTitle": "Samenvatting gekopieerd!", "summaryCopiedDesc": "Klaar om je churnanalyse te delen.", "linkCopiedTitle": "Link gekopieerd!", "linkCopiedDesc": "Deel deze link om je analyse te tonen."},
+  "summary": "📊 Mijn churnanalyse\nInitiële klanten: {{initial}}\nMaandelijkse churn: {{churnRate}}%\nPrijs per klant: ${{monthlyPrice}}\nNieuwe klanten/maand: {{newCustomers}}\nKlanten na 12 maanden: {{finalCustomers}}\nMaandelijk verlies: ${{monthlyLoss}}\nJaarlijks verlies door churn: ${{annualLoss}}\nProbeer zelf op https://breakeven.dev"
+},
+"mrr": {
+  "meta": {"title": "MRR-groeisimulator - BreakEven", "description": "Visualiseer MRR-groei met instelbare inputs en projecties."},
+  "title": "MRR-groeisimulator",
+  "subtitle": "Visualiseer je MRR-groei 📈",
+  "actions": {"copySummary": "Samenvatting kopiëren", "shareLink": "Link delen", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Jouw MRR-metrics ⚙️", "description": "Modelleer je terugkerende omzetgroei", "startingMRR": "Start-MRR: ${{value}}", "newMRR": "Nieuwe MRR per maand: ${{value}}", "churnRate": "Churn: {{value}}%", "expansionRate": "Uitbreiding: {{value}}%"},
+  "chart": {"title": "Je MRR groeit {{growth}}% naar ${{final}} 🚀", "description": "MRR-groeiverdeling over 12 maanden", "xAxis": "Maand", "yAxis": "MRR ($)"},
+  "series": {"totalMRR": "Totale MRR"},
+  "stats": {"finalMRR": "Eind-MRR", "totalGrowth": "Totale groei", "netGrowth": "Netto maandelijkse groei"},
+  "toasts": {"exportedPngTitle": "Geëxporteerd naar PNG", "exportedPngDesc": "Je MRR-simulatie is succesvol geëxporteerd.", "exportedPdfTitle": "Geëxporteerd naar PDF", "exportedPdfDesc": "Je MRR-simulatie is succesvol geëxporteerd.", "summaryCopiedTitle": "Samenvatting gekopieerd!", "summaryCopiedDesc": "Klaar om je MRR-projectie te delen."},
+  "summary": "📈 Mijn MRR-projectie\nStart-MRR: ${{startingMRR}}\nNieuwe MRR/maand: ${{newMRR}}\nChurn: {{churnRate}}%\nUitbreiding: {{expansionRate}}%\nMRR na 12 maanden: ${{finalMRR}}\nTotale groei: {{growth}}%\nProbeer zelf op https://breakeven.dev"
+},
+"retention": {
+  "meta": {"title": "Retentie-impact calculator - BreakEven", "description": "Zie hoe retentie de klantlevensduurwaarde en winstgevendheid beïnvloedt."},
+  "title": "Retentie-impact",
+  "subtitle": "Zie hoe retentie LTV beïnvloedt 🎯",
+  "actions": {"copySummary": "Samenvatting kopiëren", "shareLink": "Link delen", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Jouw bedrijfsmetrics ⚙️", "description": "Pas aan om retentie-impact te zien", "monthlyPrice": "Maandprijs: ${{value}}", "retentionRate": "Maandelijkse retentie: {{value}}%", "acquisitionCost": "Klantacquisitiekosten: ${{value}}", "grossMargin": "Brutomarge: {{value}}%"},
+  "chart": {"title": "Je LTV is ${{ltv}} met {{ratio}}:1 LTV:CAC 💰", "description": "Effect van verschillende retentieniveaus op LTV", "xAxis": "Retentiegraad", "yAxisLeft": "LTV ($)", "yAxisRight": "LTV:CAC verhouding"},
+  "series": {"ltv": "Levenslange waarde ($)", "ltvCacRatio": "LTV:CAC verhouding"},
+  "stats": {"ltv": "Klant LTV", "lifetime": "Gemiddelde levensduur", "breakEven": "Tijd tot break-even"},
+  "toasts": {"exportedPngTitle": "Geëxporteerd naar PNG", "exportedPngDesc": "Je retentie-analyse is succesvol geëxporteerd.", "exportedPdfTitle": "Geëxporteerd naar PDF", "exportedPdfDesc": "Je retentie-analyse is succesvol geëxporteerd.", "summaryCopiedTitle": "Samenvatting gekopieerd!", "summaryCopiedDesc": "Klaar om je retentie-analyse te delen."},
+  "summary": "🎯 Mijn retentie-analyse\nMaandprijs: ${{monthlyPrice}}\nRetentie: {{retentionRate}}%\nKlantlevensduur: {{lifetime}} maanden\nKlant LTV: ${{ltv}}\nCAC: ${{cac}}\nLTV:CAC: {{ratio}}:1\nBreak-even: {{breakEven}} maanden\nProbeer zelf op https://breakeven.dev"
+}
 }

@@ -31,9 +31,11 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
 import { ProInviteModal } from "@/components/ProInviteModal";
+import { useTranslation } from "react-i18next";
 
 const ROICalculator = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [setupCost, setSetupCost] = useState(5000);
   const [monthlyCost, setMonthlyCost] = useState(50);
   const [price, setPrice] = useState(29);
@@ -67,8 +69,8 @@ const ROICalculator = () => {
     }
     if (result.success) {
       toast({
-        title: "Exported to PNG",
-        description: "Your ROI calculation has been exported successfully.",
+        title: t("roi.toasts.exportedPngTitle"),
+        description: t("roi.toasts.exportedPngDesc"),
       });
       if (result.shouldShowProModal) {
         setIsLimitReached(false);
@@ -86,8 +88,8 @@ const ROICalculator = () => {
     }
     if (result.success) {
       toast({
-        title: "Exported to PDF",
-        description: "Your ROI calculation has been exported successfully.",
+        title: t("roi.toasts.exportedPdfTitle"),
+        description: t("roi.toasts.exportedPdfDesc"),
       });
       if (result.shouldShowProModal) {
         setIsLimitReached(false);
@@ -101,22 +103,21 @@ const ROICalculator = () => {
     const breakEven = data.find((d) => d.profit >= 0)?.month || null;
     const finalData = data[data.length - 1];
 
-    const summary = `💰 My project breaks even in ${
-      breakEven || "more than 24"
-    } months
-Setup cost: $${setupCost.toLocaleString()}
-Monthly cost: $${monthlyCost}
-Price per user: $${price}
-Initial users: ${initialUsers}
-Growth rate: ${growthRate}%/month
-Profit after 24 months: $${finalData.profit.toLocaleString()}
-Try it yourself at https://breakeven.dev`;
+    const summary = t("roi.summary", {
+      breakEven: breakEven || t("roi.moreThan24"),
+      setupCost: setupCost.toLocaleString(),
+      monthlyCost,
+      price,
+      initialUsers,
+      growthRate,
+      finalProfit: finalData.profit.toLocaleString(),
+    });
 
     const success = await copyToClipboard(summary);
     if (success) {
       toast({
-        title: "Summary copied!",
-        description: "Ready to share your ROI calculation.",
+        title: t("roi.toasts.summaryCopiedTitle"),
+        description: t("roi.toasts.summaryCopiedDesc"),
       });
     }
   };
@@ -133,8 +134,8 @@ Try it yourself at https://breakeven.dev`;
     const success = await copyToClipboard(url);
     if (success) {
       toast({
-        title: "Link copied!",
-        description: "Share this link to show your calculation.",
+        title: t("roi.toasts.linkCopiedTitle"),
+        description: t("roi.toasts.linkCopiedDesc"),
       });
     }
   };
@@ -172,11 +173,11 @@ Try it yourself at https://breakeven.dev`;
     <div className="min-h-screen bg-background">
       <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
       <Helmet>
-        <title>ROI Calculator - BreakEven</title>
-        <meta name="description" content="Estimate when your side project breaks even based on costs, pricing, and growth projections." />
+        <title>{t("roi.meta.title")}</title>
+        <meta name="description" content={t("roi.meta.description")} />
         <link rel="canonical" href="https://breakeven.dev/roi-calculator" />
-        <meta property="og:title" content="ROI Calculator - BreakEven" />
-        <meta property="og:description" content="Estimate when your side project breaks even based on costs, pricing, and growth projections." />
+        <meta property="og:title" content={t("roi.meta.title")} />
+        <meta property="og:description" content={t("roi.meta.description")} />
         <meta property="og:url" content="https://breakeven.dev/roi-calculator" />
       </Helmet>
       <Navigation />
@@ -185,27 +186,25 @@ Try it yourself at https://breakeven.dev`;
         <div className="mb-8 animate-slide-up">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold mb-3">ROI Calculator</h1>
-              <p className="text-xl text-muted-foreground">
-                Estimate when your side project breaks even 💰
-              </p>
+              <h1 className="text-4xl font-bold mb-3">{t("roi.title")}</h1>
+              <p className="text-xl text-muted-foreground">{t("roi.subtitle")}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Button onClick={handleCopySummary} variant="outline" size="sm">
                 <Clipboard className="w-4 h-4" />
-                Copy Summary
+                {t("roi.actions.copySummary")}
               </Button>
               <Button onClick={handleShareLink} variant="outline" size="sm">
                 <Link className="w-4 h-4" />
-                Share Link
+                {t("roi.actions.shareLink")}
               </Button>
               <Button onClick={handleExportPNG} variant="outline" size="sm">
                 <FileImage className="w-4 h-4" />
-                PNG
+                {t("roi.actions.png")}
               </Button>
               <Button onClick={handleExportPDF} variant="outline" size="sm">
                 <Download className="w-4 h-4" />
-                PDF
+                {t("roi.actions.pdf")}
               </Button>
             </div>
           </div>
@@ -214,16 +213,12 @@ Try it yourself at https://breakeven.dev`;
         <div id="roi-export-area" className="grid gap-8 animate-fade-in">
           <Card>
             <CardHeader>
-              <CardTitle>Your Assumptions ⚙️</CardTitle>
-              <CardDescription>
-                Tweak the numbers to match your project
-              </CardDescription>
+              <CardTitle>{t("roi.inputs.title")}</CardTitle>
+              <CardDescription>{t("roi.inputs.description")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-3">
-                <Label htmlFor="setupCost">
-                  Setup Cost: ${setupCost.toLocaleString()}
-                </Label>
+                <Label htmlFor="setupCost">{t("roi.inputs.setupCost", { value: setupCost.toLocaleString() })}</Label>
                 <Slider
                   id="setupCost"
                   min={0}
@@ -235,9 +230,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="monthlyCost">
-                  Monthly Recurring Cost: ${monthlyCost}
-                </Label>
+                <Label htmlFor="monthlyCost">{t("roi.inputs.monthlyCost", { value: monthlyCost })}</Label>
                 <Slider
                   id="monthlyCost"
                   min={0}
@@ -249,7 +242,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="price">Price per User/Month: ${price}</Label>
+                <Label htmlFor="price">{t("roi.inputs.price", { value: price })}</Label>
                 <Slider
                   id="price"
                   min={5}
@@ -261,9 +254,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="initialUsers">
-                  Initial Users: {initialUsers}
-                </Label>
+                <Label htmlFor="initialUsers">{t("roi.inputs.initialUsers", { value: initialUsers })}</Label>
                 <Slider
                   id="initialUsers"
                   min={1}
@@ -275,9 +266,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="growthRate">
-                  Monthly Growth Rate: {growthRate}%
-                </Label>
+                <Label htmlFor="growthRate">{t("roi.inputs.growthRate", { value: growthRate })}</Label>
                 <Slider
                   id="growthRate"
                   min={0}
@@ -294,10 +283,10 @@ Try it yourself at https://breakeven.dev`;
             <CardHeader>
               <CardTitle>
                 {breakEvenMonth !== null
-                  ? `You'll break even in ${breakEvenMonth} months 🎉`
-                  : "Keep growing to reach break-even 📈"}
+                  ? t("roi.chart.titleWithBreakEven", { months: breakEvenMonth })
+                  : t("roi.chart.titleNoBreakEven")}
               </CardTitle>
-              <CardDescription>Revenue vs. Cost over 24 months</CardDescription>
+              <CardDescription>{t("roi.chart.description")}</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
@@ -309,14 +298,14 @@ Try it yourself at https://breakeven.dev`;
                   <XAxis
                     dataKey="month"
                     label={{
-                      value: "Month",
+                      value: t("roi.chart.xAxis"),
                       position: "insideBottom",
                       offset: -5,
                     }}
                   />
                   <YAxis
                     label={{
-                      value: "Amount ($)",
+                      value: t("roi.chart.yAxis"),
                       angle: -90,
                       position: "insideLeft",
                     }}
@@ -338,7 +327,7 @@ Try it yourself at https://breakeven.dev`;
                     dataKey="revenue"
                     stroke="hsl(var(--chart-1))"
                     strokeWidth={3}
-                    name="Revenue"
+                    name={t("roi.series.revenue")}
                     dot={false}
                   />
                   <Line
@@ -346,7 +335,7 @@ Try it yourself at https://breakeven.dev`;
                     dataKey="cost"
                     stroke="hsl(var(--chart-3))"
                     strokeWidth={3}
-                    name="Cost"
+                    name={t("roi.series.cost")}
                     dot={false}
                   />
                   <Line
@@ -355,7 +344,7 @@ Try it yourself at https://breakeven.dev`;
                     stroke="hsl(var(--chart-4))"
                     strokeWidth={2}
                     strokeDasharray="5 5"
-                    name="Profit"
+                    name={t("roi.series.profit")}
                     dot={false}
                   />
                 </LineChart>
@@ -363,19 +352,19 @@ Try it yourself at https://breakeven.dev`;
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6 p-4 bg-accent/50 rounded-lg">
                 <div>
-                  <p className="text-sm text-muted-foreground">Final Revenue</p>
+                  <p className="text-sm text-muted-foreground">{t("roi.stats.finalRevenue")}</p>
                   <p className="text-2xl font-bold text-primary">
                     ${data[data.length - 1].revenue.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Cost</p>
+                  <p className="text-sm text-muted-foreground">{t("roi.stats.totalCost")}</p>
                   <p className="text-2xl font-bold">
                     ${data[data.length - 1].cost.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Final Users</p>
+                  <p className="text-sm text-muted-foreground">{t("roi.stats.finalUsers")}</p>
                   <p className="text-2xl font-bold">
                     {data[data.length - 1].users.toLocaleString()}
                   </p>

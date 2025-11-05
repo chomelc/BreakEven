@@ -142,5 +142,67 @@
     "lifetimeAccessDesc": "Pago único, sin tarifas recurrentes",
     "maybeLater": "Tal vez más tarde",
     "getPro": "Obtener BreakEven Pro (5$)"
-  }
+  },
+  
+"roi": {
+  "meta": {"title": "Calculadora de ROI - BreakEven", "description": "Estima cuándo tu proyecto alcanza el punto de equilibrio según costos, precios y crecimiento."},
+  "title": "Calculadora de ROI",
+  "subtitle": "Estima cuándo alcanzas el punto de equilibrio 💰",
+  "actions": {"copySummary": "Copiar resumen", "shareLink": "Compartir enlace", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Tus supuestos ⚙️", "description": "Ajusta los números a tu proyecto", "setupCost": "Costo inicial: ${{value}}", "monthlyCost": "Costo mensual recurrente: ${{value}}", "price": "Precio por usuario/mes: ${{value}}", "initialUsers": "Usuarios iniciales: {{value}}", "growthRate": "Tasa de crecimiento mensual: {{value}}%"},
+  "chart": {"titleWithBreakEven": "Alcanzas el equilibrio en {{months}} meses 🎉", "titleNoBreakEven": "Sigue creciendo para alcanzar el equilibrio 📈", "description": "Ingresos vs. Costos a 24 meses", "xAxis": "Mes", "yAxis": "Monto ($)"},
+  "series": {"revenue": "Ingresos", "cost": "Costos", "profit": "Beneficio"},
+  "stats": {"finalRevenue": "Ingresos finales", "totalCost": "Costo total", "finalUsers": "Usuarios finales"},
+  "toasts": {"exportedPngTitle": "Exportado a PNG", "exportedPngDesc": "Tu cálculo de ROI se exportó correctamente.", "exportedPdfTitle": "Exportado a PDF", "exportedPdfDesc": "Tu cálculo de ROI se exportó correctamente.", "summaryCopiedTitle": "¡Resumen copiado!", "summaryCopiedDesc": "Listo para compartir tu cálculo de ROI.", "linkCopiedTitle": "¡Enlace copiado!", "linkCopiedDesc": "Comparte este enlace para mostrar tu cálculo."},
+  "summary": "💰 Mi proyecto alcanza el equilibrio en {{breakEven}} meses\nCosto inicial: ${{setupCost}}\nCosto mensual: ${{monthlyCost}}\nPrecio por usuario: ${{price}}\nUsuarios iniciales: {{initialUsers}}\nCrecimiento: {{growthRate}}%/mes\nBeneficio tras 24 meses: ${{finalProfit}}\nPruébalo en https://breakeven.dev",
+  "moreThan24": "más de 24"
+},
+"pricing": {
+  "meta": {"title": "Calculadora de precios - BreakEven", "description": "Experimenta con precios y tasas de conversión para optimizar ingresos."},
+  "title": "Calculadora de precios",
+  "subtitle": "Encuentra tu precio óptimo 💵",
+  "actions": {"copySummary": "Copiar resumen", "shareLink": "Compartir enlace", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Tu tráfico y conversión ⚙️", "description": "Ajusta tus supuestos", "visitors": "Visitantes mensuales: {{value}}", "conversion": "Tasa de conversión base: {{value}}%", "price": "Tu precio objetivo: ${{value}}"},
+  "chart": {"title": "A ${{price}}/mes, generarías ${{mrr}}/mes 🎯", "description": "Compara precios y su impacto en el MRR", "xAxis": "Nivel de precio", "yAxis": "MRR ($)"},
+  "series": {"mrr": "Ingresos recurrentes mensuales"},
+  "stats": {"users": "Clientes de pago", "annual": "Ingresos anuales"},
+  "toasts": {"exportedPngTitle": "Exportado a PNG", "exportedPngDesc": "Tu análisis de precios se exportó correctamente.", "exportedPdfTitle": "Exportado a PDF", "exportedPdfDesc": "Tu análisis de precios se exportó correctamente.", "summaryCopiedTitle": "¡Resumen copiado!", "summaryCopiedDesc": "Listo para compartir tu análisis de precios.", "linkCopiedTitle": "¡Enlace copiado!", "linkCopiedDesc": "Comparte este enlace para mostrar tu análisis."},
+  "summary": "💵 Mi análisis de precios\nVisitantes mensuales: {{visitors}}\nTasa de conversión base: {{conversionRate}}%\nPrecio objetivo: ${{pricePoint}}\nClientes de pago: {{users}}\nIngresos mensuales: ${{mrr}}\nIngresos anuales: ${{annual}}\nPruébalo en https://breakeven.dev"
+},
+"churn": {
+  "meta": {"title": "Calculadora de churn - BreakEven", "description": "Comprende el impacto de la pérdida de clientes en tus ingresos recurrentes en el tiempo."},
+  "title": "Calculadora de churn",
+  "subtitle": "Entiende tu impacto de churn 📊",
+  "actions": {"copySummary": "Copiar resumen", "shareLink": "Compartir enlace", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Tus métricas ⚙️", "description": "Ajusta a tu negocio", "initialCustomers": "Clientes iniciales: {{value}}", "monthlyPrice": "Precio mensual por cliente: ${{value}}", "churnRate": "Tasa de churn mensual: {{value}}%", "newCustomers": "Nuevos clientes por mes: {{value}}"},
+  "chart": {"title": "Pierdes ${{monthlyLoss}}/mes por churn 📉", "description": "Clientes e impacto en ingresos a 12 meses", "xAxis": "Mes", "yAxisLeft": "Clientes", "yAxisRight": "MRR ($)"},
+  "series": {"customers": "Clientes", "mrr": "MRR"},
+  "stats": {"finalCustomers": "Clientes finales", "monthlyLoss": "Pérdida mensual por churn", "annualImpact": "Impacto anual del churn"},
+  "toasts": {"exportedPngTitle": "Exportado a PNG", "exportedPngDesc": "Tu análisis de churn se exportó correctamente.", "exportedPdfTitle": "Exportado a PDF", "exportedPdfDesc": "Tu análisis de churn se exportó correctamente.", "summaryCopiedTitle": "¡Resumen copiado!", "summaryCopiedDesc": "Listo para compartir tu análisis de churn.", "linkCopiedTitle": "¡Enlace copiado!", "linkCopiedDesc": "Comparte este enlace para mostrar tu análisis."},
+  "summary": "📊 Mi análisis de churn\nClientes iniciales: {{initial}}\nTasa de churn mensual: {{churnRate}}%\nPrecio por cliente: ${{monthlyPrice}}\nNuevos clientes/mes: {{newCustomers}}\nClientes tras 12 meses: {{finalCustomers}}\nPérdida mensual: ${{monthlyLoss}}\nPérdida anual por churn: ${{annualLoss}}\nPruébalo en https://breakeven.dev"
+},
+"mrr": {
+  "meta": {"title": "Simulador de crecimiento MRR - BreakEven", "description": "Visualiza el crecimiento del MRR con entradas ajustables y proyecciones."},
+  "title": "Simulador de crecimiento MRR",
+  "subtitle": "Visualiza tu crecimiento de MRR 📈",
+  "actions": {"copySummary": "Copiar resumen", "shareLink": "Compartir enlace", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Tus métricas de MRR ⚙️", "description": "Modela tu crecimiento de ingresos recurrentes", "startingMRR": "MRR inicial: ${{value}}", "newMRR": "Nuevo MRR por mes: ${{value}}", "churnRate": "Tasa de churn: {{value}}%", "expansionRate": "Tasa de expansión: {{value}}%"},
+  "chart": {"title": "Tu MRR crecerá {{growth}}% hasta ${{final}} 🚀", "description": "Desglose del crecimiento de MRR en 12 meses", "xAxis": "Mes", "yAxis": "MRR ($)"},
+  "series": {"totalMRR": "MRR total"},
+  "stats": {"finalMRR": "MRR final", "totalGrowth": "Crecimiento total", "netGrowth": "Crecimiento neto mensual"},
+  "toasts": {"exportedPngTitle": "Exportado a PNG", "exportedPngDesc": "Tu simulación de MRR se exportó correctamente.", "exportedPdfTitle": "Exportado a PDF", "exportedPdfDesc": "Tu simulación de MRR se exportó correctamente.", "summaryCopiedTitle": "¡Resumen copiado!", "summaryCopiedDesc": "Listo para compartir tu proyección de MRR."},
+  "summary": "📈 Mi proyección de MRR\nMRR inicial: ${{startingMRR}}\nNuevo MRR/mes: ${{newMRR}}\nTasa de churn: {{churnRate}}%\nTasa de expansión: {{expansionRate}}%\nMRR tras 12 meses: ${{finalMRR}}\nCrecimiento total: {{growth}}%\nPruébalo en https://breakeven.dev"
+},
+"retention": {
+  "meta": {"title": "Calculadora de impacto de retención - BreakEven", "description": "Observa cómo la retención afecta el valor de vida del cliente y la rentabilidad."},
+  "title": "Impacto de retención",
+  "subtitle": "Observa cómo la retención afecta el LTV 🎯",
+  "actions": {"copySummary": "Copiar resumen", "shareLink": "Compartir enlace", "png": "PNG", "pdf": "PDF"},
+  "inputs": {"title": "Métricas del negocio ⚙️", "description": "Ajusta para ver el impacto de la retención", "monthlyPrice": "Precio mensual: ${{value}}", "retentionRate": "Tasa de retención mensual: {{value}}%", "acquisitionCost": "Costo de adquisición (CAC): ${{value}}", "grossMargin": "Margen bruto: {{value}}%"},
+  "chart": {"title": "Tu LTV es ${{ltv}} con {{ratio}}:1 LTV:CAC 💰", "description": "Cómo distintos niveles de retención impactan el LTV", "xAxis": "Tasa de retención", "yAxisLeft": "LTV ($)", "yAxisRight": "Relación LTV:CAC"},
+  "series": {"ltv": "Valor de vida ($)", "ltvCacRatio": "Relación LTV:CAC"},
+  "stats": {"ltv": "LTV del cliente", "lifetime": "Vida media", "breakEven": "Tiempo a equilibrio"},
+  "toasts": {"exportedPngTitle": "Exportado a PNG", "exportedPngDesc": "Tu análisis de retención se exportó correctamente.", "exportedPdfTitle": "Exportado a PDF", "exportedPdfDesc": "Tu análisis de retención se exportó correctamente.", "summaryCopiedTitle": "¡Resumen copiado!", "summaryCopiedDesc": "Listo para compartir tu análisis de retención."},
+  "summary": "🎯 Mi análisis de retención\nPrecio mensual: ${{monthlyPrice}}\nTasa de retención: {{retentionRate}}%\nVida del cliente: {{lifetime}} meses\nLTV: ${{ltv}}\nCAC: ${{cac}}\nRelación LTV:CAC: {{ratio}}:1\nEquilibrio: {{breakEven}} meses\nPruébalo en https://breakeven.dev"
+}
 }

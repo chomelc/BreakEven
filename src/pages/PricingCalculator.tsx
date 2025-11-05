@@ -29,9 +29,11 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet-async";
 import { ProInviteModal } from "@/components/ProInviteModal";
+import { useTranslation } from "react-i18next";
 
 const PricingCalculator = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [visitors, setVisitors] = useState(1000);
   const [conversionRate, setConversionRate] = useState(5);
   const [pricePoint, setPricePoint] = useState(29);
@@ -59,8 +61,8 @@ const PricingCalculator = () => {
     }
     if (result.success) {
       toast({
-        title: "Exported to PNG",
-        description: "Your pricing analysis has been exported successfully.",
+        title: t("pricing.toasts.exportedPngTitle"),
+        description: t("pricing.toasts.exportedPngDesc"),
       });
       if (result.shouldShowProModal) {
         setIsLimitReached(false);
@@ -78,8 +80,8 @@ const PricingCalculator = () => {
     }
     if (result.success) {
       toast({
-        title: "Exported to PDF",
-        description: "Your pricing analysis has been exported successfully.",
+        title: t("pricing.toasts.exportedPdfTitle"),
+        description: t("pricing.toasts.exportedPdfDesc"),
       });
       if (result.shouldShowProModal) {
         setIsLimitReached(false);
@@ -92,20 +94,20 @@ const PricingCalculator = () => {
     const data = calculatePricing();
     const selectedData = data.find((d) => d.priceValue === pricePoint);
 
-    const summary = `💵 My optimal pricing analysis
-Monthly visitors: ${visitors.toLocaleString()}
-Base conversion rate: ${conversionRate}%
-Target price: $${pricePoint}
-Paying customers: ${selectedData?.users.toLocaleString() || 0}
-Monthly revenue: $${selectedData?.mrr.toLocaleString() || 0}
-Annual revenue: $${((selectedData?.mrr || 0) * 12).toLocaleString()}
-Try it yourself at https://breakeven.dev`;
+    const summary = t("pricing.summary", {
+      visitors: visitors.toLocaleString(),
+      conversionRate,
+      pricePoint,
+      users: selectedData?.users.toLocaleString() || 0,
+      mrr: selectedData?.mrr.toLocaleString() || 0,
+      annual: ((selectedData?.mrr || 0) * 12).toLocaleString(),
+    });
 
     const success = await copyToClipboard(summary);
     if (success) {
       toast({
-        title: "Summary copied!",
-        description: "Ready to share your pricing analysis.",
+        title: t("pricing.toasts.summaryCopiedTitle"),
+        description: t("pricing.toasts.summaryCopiedDesc"),
       });
     }
   };
@@ -120,8 +122,8 @@ Try it yourself at https://breakeven.dev`;
     const success = await copyToClipboard(url);
     if (success) {
       toast({
-        title: "Link copied!",
-        description: "Share this link to show your analysis.",
+        title: t("pricing.toasts.linkCopiedTitle"),
+        description: t("pricing.toasts.linkCopiedDesc"),
       });
     }
   };
@@ -152,11 +154,11 @@ Try it yourself at https://breakeven.dev`;
     <div className="min-h-screen bg-background">
       <ProInviteModal open={showProModal} onOpenChange={setShowProModal} isLimitReached={isLimitReached} />
       <Helmet>
-        <title>Pricing Calculator - BreakEven</title>
-        <meta name="description" content="Experiment with different price points and conversion rates to optimize revenue." />
+        <title>{t("pricing.meta.title")}</title>
+        <meta name="description" content={t("pricing.meta.description")} />
         <link rel="canonical" href="https://breakeven.dev/pricing-calculator" />
-        <meta property="og:title" content="Pricing Calculator - BreakEven" />
-        <meta property="og:description" content="Experiment with different price points and conversion rates to optimize revenue." />
+        <meta property="og:title" content={t("pricing.meta.title")} />
+        <meta property="og:description" content={t("pricing.meta.description")} />
         <meta property="og:url" content="https://breakeven.dev/pricing-calculator" />
       </Helmet>
       <Navigation />
@@ -165,27 +167,25 @@ Try it yourself at https://breakeven.dev`;
         <div className="mb-8 animate-slide-up">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold mb-3">Pricing Calculator</h1>
-              <p className="text-xl text-muted-foreground">
-                Find your optimal price point 💵
-              </p>
+              <h1 className="text-4xl font-bold mb-3">{t("pricing.title")}</h1>
+              <p className="text-xl text-muted-foreground">{t("pricing.subtitle")}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               <Button onClick={handleCopySummary} variant="outline" size="sm">
                 <Clipboard className="w-4 h-4" />
-                Copy Summary
+                {t("pricing.actions.copySummary")}
               </Button>
               <Button onClick={handleShareLink} variant="outline" size="sm">
                 <Link className="w-4 h-4" />
-                Share Link
+                {t("pricing.actions.shareLink")}
               </Button>
               <Button onClick={handleExportPNG} variant="outline" size="sm">
                 <FileImage className="w-4 h-4" />
-                PNG
+                {t("pricing.actions.png")}
               </Button>
               <Button onClick={handleExportPDF} variant="outline" size="sm">
                 <Download className="w-4 h-4" />
-                PDF
+                {t("pricing.actions.pdf")}
               </Button>
             </div>
           </div>
@@ -194,14 +194,12 @@ Try it yourself at https://breakeven.dev`;
         <div id="pricing-export-area" className="grid gap-8 animate-fade-in">
           <Card>
             <CardHeader>
-              <CardTitle>Your Traffic & Conversion ⚙️</CardTitle>
-              <CardDescription>Adjust your assumptions</CardDescription>
+              <CardTitle>{t("pricing.inputs.title")}</CardTitle>
+              <CardDescription>{t("pricing.inputs.description")}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-3">
-                <Label htmlFor="visitors">
-                  Monthly Visitors: {visitors.toLocaleString()}
-                </Label>
+                <Label htmlFor="visitors">{t("pricing.inputs.visitors", { value: visitors.toLocaleString() })}</Label>
                 <Slider
                   id="visitors"
                   min={100}
@@ -213,9 +211,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="conversionRate">
-                  Base Conversion Rate: {conversionRate}%
-                </Label>
+                <Label htmlFor="conversionRate">{t("pricing.inputs.conversion", { value: conversionRate })}</Label>
                 <Slider
                   id="conversionRate"
                   min={1}
@@ -227,9 +223,7 @@ Try it yourself at https://breakeven.dev`;
               </div>
 
               <div className="space-y-3">
-                <Label htmlFor="pricePoint">
-                  Your Target Price: ${pricePoint}
-                </Label>
+                <Label htmlFor="pricePoint">{t("pricing.inputs.price", { value: pricePoint })}</Label>
                 <Slider
                   id="pricePoint"
                   min={9}
@@ -244,13 +238,8 @@ Try it yourself at https://breakeven.dev`;
 
           <Card>
             <CardHeader>
-              <CardTitle>
-                At ${pricePoint}/month, you'd make $
-                {selectedData?.mrr.toLocaleString()}/month 🎯
-              </CardTitle>
-              <CardDescription>
-                Compare different price points and their impact on MRR
-              </CardDescription>
+              <CardTitle>{t("pricing.chart.title", { price: pricePoint, mrr: selectedData?.mrr.toLocaleString() })}</CardTitle>
+              <CardDescription>{t("pricing.chart.description")}</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
@@ -262,14 +251,14 @@ Try it yourself at https://breakeven.dev`;
                   <XAxis
                     dataKey="price"
                     label={{
-                      value: "Price Point",
+                      value: t("pricing.chart.xAxis"),
                       position: "insideBottom",
                       offset: -5,
                     }}
                   />
                   <YAxis
                     label={{
-                      value: "MRR ($)",
+                      value: t("pricing.chart.yAxis"),
                       angle: -90,
                       position: "insideLeft",
                     }}
@@ -285,24 +274,20 @@ Try it yourself at https://breakeven.dev`;
                     dataKey="mrr"
                     fill="hsl(var(--chart-1))"
                     radius={[8, 8, 0, 0]}
-                    name="Monthly Recurring Revenue"
+                    name={t("pricing.series.mrr")}
                   />
                 </BarChart>
               </ResponsiveContainer>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6 p-4 bg-accent/50 rounded-lg">
                 <div>
-                  <p className="text-sm text-muted-foreground">
-                    Paying Customers
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t("pricing.stats.users")}</p>
                   <p className="text-2xl font-bold text-primary">
                     {selectedData?.users.toLocaleString()}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">
-                    Annual Revenue
-                  </p>
+                  <p className="text-sm text-muted-foreground">{t("pricing.stats.annual")}</p>
                   <p className="text-2xl font-bold">
                     ${((selectedData?.mrr || 0) * 12).toLocaleString()}
                   </p>
