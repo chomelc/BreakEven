@@ -1,5 +1,12 @@
 # <img src="assets/BreakEven-logo.png" alt="BreakEven Logo" width="36" height="36" /> BreakEven
 
+<a href="https://www.buymeacoffee.com/breakeven" target="_blank" rel="noopener noreferrer">
+  <img
+    alt="Support BreakEven on Buy Me a Coffee"
+    src="https://img.buymeacoffee.com/button-api/?text=Support%20BreakEven&emoji=%F0%9F%9A%80&slug=breakeven&button_colour=10b77f&font_colour=ffffff&font_family=Inter&outline_colour=ffffff&coffee_colour=FFDD00"
+  />
+ </a>
+
 Free financial calculators to help indie hackers and solopreneurs make smarter decisions about pricing, growth, and profitability.
 
 [![BreakEven Hero](public/og-image.png)](https://breakeven.dev)
