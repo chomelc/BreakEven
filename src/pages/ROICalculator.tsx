@@ -110,7 +110,7 @@ Price per user: $${price}
 Initial users: ${initialUsers}
 Growth rate: ${growthRate}%/month
 Profit after 24 months: $${finalData.profit.toLocaleString()}
-Try it yourself at breakeven.dev`;
+Try it yourself at https://breakeven.dev`;
 
     const success = await copyToClipboard(summary);
     if (success) {

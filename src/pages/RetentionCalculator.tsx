@@ -89,7 +89,7 @@ Customer LTV: $${Math.round(ltv).toLocaleString()}
 CAC: $${acquisitionCost}
 LTV:CAC ratio: ${ltvCacRatio.toFixed(1)}:1
 Break-even: ${breakEvenMonths.toFixed(1)} months
-Try it yourself at breakeven.dev`;
+Try it yourself at https://breakeven.dev`;
 
     const success = await copyToClipboard(summary);
     if (success) {
