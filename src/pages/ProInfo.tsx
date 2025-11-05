@@ -245,7 +245,7 @@ const ProInfo = () => {
                     <Button
                       asChild
                       size="lg"
-                      variant="outline"
+                      variant="default"
                       className="gap-2 text-base"
                     >
                       <Link to="/">
