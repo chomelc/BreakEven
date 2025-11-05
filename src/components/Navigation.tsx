@@ -64,7 +64,7 @@ const Navigation = () => {
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <Calculator className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-semibold text-lg hidden sm:inline flex items-center gap-2">
+            <span className="font-semibold text-lg hidden md:inline flex items-center gap-2">
               BreakEven
             </span>
             <span>
@@ -78,7 +78,7 @@ const Navigation = () => {
 
           <div className="flex items-center gap-2">
             {/* Desktop navigation */}
-            <div className="hidden sm:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 const Icon = item.icon;
@@ -99,7 +99,13 @@ const Navigation = () => {
                       {Icon && (
                         <Icon className={isHome ? "w-4 h-4" : "w-4 h-4"} />
                       )}
-                      <span className="hidden sm:inline">{item.label}</span>
+                      <span
+                        className={
+                          isProLink ? "hidden md:inline" : "hidden md:hidden lg:inline"
+                        }
+                      >
+                        {item.label}
+                      </span>
                     </Link>
                   </Button>
                 );
@@ -107,7 +113,7 @@ const Navigation = () => {
             </div>
 
             {/* Mobile menu trigger */}
-            <div className="sm:hidden">
+            <div className="md:hidden">
               <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon" aria-label="Open menu">
@@ -183,8 +189,15 @@ const Navigation = () => {
               </Sheet>
             </div>
 
-            <div className="hidden sm:flex items-center gap-2">
-              <LanguageToggle />
+            <div className="hidden md:flex items-center gap-2">
+              {/* Flag only between md and lg */}
+              <span className="hidden md:inline-flex lg:hidden">
+                <LanguageToggle hideLabel={true} />
+              </span>
+              {/* Flag + label at lg and above */}
+              <span className="hidden lg:inline-flex">
+                <LanguageToggle />
+              </span>
               <ThemeToggle />
             </div>
           </div>

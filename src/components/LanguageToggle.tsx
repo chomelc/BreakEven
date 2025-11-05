@@ -24,9 +24,11 @@ const languages = [
 
 interface LanguageToggleProps {
   showLabel?: boolean;
+  hideLabel?: boolean; // forces label hidden regardless of device size
+  className?: string; // optional className to control responsive visibility from parent
 }
 
-export function LanguageToggle({ showLabel = false }: LanguageToggleProps) {
+export function LanguageToggle({ showLabel = false, hideLabel = false, className = "" }: LanguageToggleProps) {
   const { i18n } = useTranslation();
   const isMobile = useIsMobile();
 
@@ -36,14 +38,14 @@ export function LanguageToggle({ showLabel = false }: LanguageToggleProps) {
     i18n.changeLanguage(langCode);
   };
 
-  const shouldShowLabel = showLabel || !isMobile;
+  const shouldShowLabel = !hideLabel && (showLabel || !isMobile);
 
   const CurrentFlag = currentLanguage.Flag;
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2">
+        <Button variant="ghost" size="sm" className={`gap-2 ${className}`}>
           <CurrentFlag className="w-5 h-4 rounded-sm" />
           {shouldShowLabel && (
             <span>{currentLanguage.nativeName}</span>
